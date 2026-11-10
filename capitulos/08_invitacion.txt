@@ -1,0 +1,165 @@
+# =====================================================================
+#  SEGUNDA PARTE — CAPÍTULO 8 — La invitación
+# =====================================================================
+
+[capitulo8]
+fondo playa
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+SEGUNDA PARTE: MUY MUY LEJANO
+Después de la boda, Fiona y tú se van de luna de miel.
+si sabe_mar: Recordaste que ella quería ver el mar. La llevas a una playa escondida.
+? ¿Qué es lo primero que hacen en la playa?
+* Construir un castillo de arena... con lodo | amor += 1
+* Atrapar cangrejos para la cena
+* Nada más mirar el mar juntos | amor += 1
+si eleccion == 1: Es el castillo más feo y más feliz del reino.
+si eleccion == 2: Fiona atrapa más. Siempre atrapa más.
+si eleccion == 3: fiona: Es más grande de lo que imaginé. Y suena justo como dijiste.
+
+? Un grupo de turistas se espanta al verlos. ¿Qué haces?
+* Saludarlos amablemente | cuentos += 1
+* Asustarlos un poco más, por diversión | gruñon += 1
+* Ignorarlos y seguir con Fiona | amor += 1
+si eleccion == 1: Una señora te devuelve el saludo con la sombrilla temblando.
+si eleccion == 2: Fiona se ríe tanto que también ruge. Los turistas desaparecen.
+
+? Fiona quiere nadar. Tú odias el agua salada.
+* Te metes igual, por ella | amor += 1, valor += 1
+* La miras desde la orilla
+* Le propones un baño de lodo en lugar de mar
+si eleccion == 1: El agua te pica en lugares que ni sabías que tenías. Pero ella está feliz.
+si eleccion == 3: fiona: ¡Encontré un charco de lodo junto a las palmeras! Lo mejor de los dos mundos.
+
+? En la noche, Fiona te pregunta cuál fue tu momento favorito del viaje.
+* "Cuando te vi pelear con los bandidos." | amor += 1
+* "Cuando me dijiste la verdad en el molino." | amor += 1
+* "Este. Ahora." | amor += 2
+si eleccion == 3: fiona: Eso fue muy cursi. ...Dilo otra vez.
+
+fondo pantano
+Regresan al pantano. Algo te espera en la puerta.
+mostrar burro centro
+burro: ¡Volvieron! ¡Cuidé el pantano! Bueno, más o menos. Una ardilla se mudó a tu tina.
+? ¿Cómo saludas a Burro?
+* Con un abrazo | amistad += 2
+* "¿Qué haces en mi casa?" | gruñon += 1
+* "¿Una ardilla? ¿En MI tina?"
+si eleccion == 1: burro: ¡Me abrazó! ¡Fiona, viste! ¡Me abrazó primero!
+si eleccion == 2: burro: Te extrañé también. Ya sé que en el fondo me extrañaste.
+si eleccion == 3: La ardilla te mira desde la tina con total tranquilidad.
+
+burro: Por cierto, mi novia la Dragona te manda saludos. Y unos trozos de castillo derretido.
+? ¿Qué le preguntas a Burro?
+* "¿Cómo te va con la Dragona?" | amistad += 1, dragona += 1
+* "¿Vas a quedarte mucho tiempo?"
+* "¿Ya te vas?" | gruñon += 1
+si eleccion == 1: burro: ¡De maravilla! Bueno, a veces me quema la cola cuando estornuda. Es el amor.
+si eleccion == 2: burro: ¡Uy, sí! Bueno, no. Bueno, depende de cuánta comida tengas.
+si eleccion == 3: burro: Qué gracioso. Ja. Ja. No.
+
+[mensajero]
+Un sonido de trompetas interrumpe la paz. Un mensajero real llega al pantano, temblando.
+guardia: ¡Proclama real! El rey y la reina de Muy Muy Lejano invitan a la princesa Fiona y a su... nuevo esposo... a un baile de bienvenida.
+fiona: ¡Mis papás! ¡Quieren conocerte!
+? ¿Cómo reaccionas?
+* "Qué bien." (sin ganas)
+* "¿Tus papás saben que soy ogro?"
+* "Iremos, si eso te hace feliz." | amor += 2
+si eleccion == 1: fiona: Lo dijiste como si te hubieran invitado a una ejecución.
+si eleccion == 2: fiona: Bueno... saben que me casé. No saben con quién. Ni que yo soy ogra ahora.
+si eleccion == 3: fiona: ¡Gracias, gracias! Te van a adorar. Probablemente.
+
+? Fiona te pide que vayan. ¿Qué decides?
+* Ir a Muy Muy Lejano -> preparar_viaje
+* Convencerla de no ir -> no_ir
+
+[no_ir]
+shrek: Fiona, ellos te encerraron en una torre. ¿De verdad quieres ir?
+? ¿Cómo lo dices?
+* Con cariño, preocupado por ella | amor += 1
+* Molesto, porque no quieres ir | gruñon += 1
+si eleccion == 1: fiona: Lo sé. Pero son mis padres. Y quiero que te conozcan.
+si eleccion == 2: fiona: Esto no se trata de ti. Se trata de mi familia.
+? Fiona espera tu respuesta final.
+* "Está bien. Vamos." -> preparar_viaje | amor += 1
+* "No voy. Lo siento." -> quedarse_pantano
+
+[quedarse_pantano]
+Fiona va sola a ver a sus padres. Regresa tres días después, cansada pero tranquila.
+fiona: Les conté todo. Gritaron, lloraron, me abrazaron. Algún día irás tú. Algún día.
+Vuelven a la vida tranquila del pantano. Pero hay una pregunta que se queda flotando en el aire.
+final quedarse "Nos quedamos en el pantano" "Evitaste un viaje incómodo... y conocer a tu nueva familia."
+
+[preparar_viaje]
+fondo casa
+? ¿Qué te pones para conocer a los reyes?
+* Tu chaleco de siempre
+* Una camisa que Fiona te cosió | amor += 1
+* Te lavas las orejas por primera vez en el año | suegro += 1
+si eleccion == 1: fiona: Bueno... es auténtico.
+si eleccion == 2: Te queda apretada de los hombros. Pero ella está orgullosa.
+si eleccion == 3: Sale tanta cera que Burro la usa para hacer una vela.
+
+? ¿Qué regalo llevas para los reyes?
+* Un frasco de gusanos en salmuera, tu especialidad
+* Flores del pantano | reina += 1
+* Nada: ellos son los ricos
+si eleccion == 1: fiona: Mejor... lo guardamos para después.
+si eleccion == 2: Recoges las flores menos apestosas. Huelen casi normales.
+si eleccion == 3: fiona: No se trata de dinero, Shrek.
+
+mostrar burro derecha
+burro: ¡Yo también voy! ¡Viaje familiar! ¡Me encantan los viajes familiares!
+? ¿Dejas que Burro venga?
+* "Claro, eres de la familia." | amistad += 2
+* "No. Esto es asunto nuestro." | amistad -= 1
+* Fiona decide | amor += 1
+si eleccion == 1: burro: ¿De la FAMILIA? ¡Necesito un momento!
+si eleccion == 2: burro: Bueno. Voy a ir de todos modos. Escondido. Muy escondido.
+si eleccion == 3: fiona: Que venga. Va a ser divertido. burro: ¡Ella sí me quiere!
+
+[carruaje]
+fondo carruaje
+Viajan en un carruaje prestado que huele a repollo y que consiguió Burro. No preguntes cómo.
+El viaje a Muy Muy Lejano es largo. Larguísimo.
+? Burro pregunta por quinta vez si ya están cerca. ¿Qué haces?
+* Responderle con paciencia | amistad += 1
+* Jugar a "veo, veo" para distraerlo
+* Hacer ruidos para callarlo | gruñon += 1
+si eleccion == 1: shrek: No, Burro. Todavía no. burro: Okey. ... ... ¿Y ahora?
+si eleccion == 2: burro: Veo, veo... algo verde. shrek: Soy yo. burro: ¡Ganaste otra vez!
+si eleccion == 3: Haces "pop" con la boca. Burro te imita. Ahora son dos haciendo "pop". Fiona sufre.
+
+? Fiona está nerviosa por ver a sus padres. ¿Qué haces?
+* Tomarle la mano | amor += 1
+* Contarle un chiste
+* "Tranquila, ¿qué es lo peor que puede pasar?"
+si eleccion == 1: fiona: Gracias. Contigo aquí, todo va a salir bien.
+si eleccion == 2: El chiste es malísimo. Ella se ríe igual.
+si eleccion == 3: fiona: Que mi papá te odie. Que mi mamá llore. Que se cancele el reino.
+
+? Fiona te pregunta cómo te sientes tú.
+* "Nervioso. La verdad." | amor += 1, valor += 1
+* "Bien. Todo bien."
+* "Como si fuera a mi propio juicio." | gruñon += 1
+si eleccion == 1: fiona: Gracias por decírmelo. Estamos juntos en esto.
+si eleccion == 2: fiona: Se te mueve la oreja cuando mientes, ¿sabías?
+
+? Pasan por un bosque encantado. ¿Se detienen?
+* Sí, a estirar las piernas
+* No, ya quieren llegar
+si eleccion == 1: Un hada pequeñita les deja un trébol de cuatro hojas en la ventana.
+si eleccion == 1: $ suerte = 1
+
+fondo lejano
+A lo lejos aparece Muy Muy Lejano: un reino lleno de castillos rosados, palmeras y letreros dorados.
+burro: ¡Wow! ¡Esto parece una postal!
+? ¿Qué piensas del reino?
+* "Es bonito."
+* "Hay demasiada gente." | gruñon += 1
+* "Aquí nadie va a querer a un ogro."
+si eleccion == 3: fiona: Eso ya lo veremos. Igual te van a querer. Yo te quiero.
+si eleccion == 3: $ amor += 1
+ir posada

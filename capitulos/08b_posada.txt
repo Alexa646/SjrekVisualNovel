@@ -1,0 +1,104 @@
+# =====================================================================
+#  CAPÍTULO 8½ — La posada del cruce (aventura original)
+# =====================================================================
+
+[posada]
+fondo taberna
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+A mitad del camino, el carruaje pierde una rueda frente a una posada vieja con un letrero que dice "EL CRUCE".
+? ¿Qué hacen?
+* Arreglar la rueda tú mismo | valor += 1
+* Pasar la noche en la posada
+* Pedirle ayuda al posadero | cuentos += 1
+si eleccion == 1: La arreglas, pero se hace de noche. Mejor dormir aquí.
+si eleccion == 3: El posadero dice que su herrero llegará mañana. Mejor dormir aquí.
+
+La posadera es una bruja amable con un gorro torcido y una tetera que habla.
+? ¿Cómo la saludas?
+* Con una reverencia | cuentos += 1
+* Con un gruñido | gruñon += 1
+* Le preguntas a la tetera cómo está
+si eleccion == 1: bruja: ¡Un ogro educado! Hoy la sopa va por cuenta de la casa.
+si eleccion == 3: La tetera se sonroja. Nadie le pregunta nunca cómo está. Silba de felicidad.
+
+? ¿Qué habitación eligen?
+* La más barata, junto al establo
+* La de la torre, con vista a las estrellas | amor += 1
+* La que la bruja recomiende
+si eleccion == 1: Burro está feliz: duerme cerca de los caballos. Les cuenta toda tu vida.
+si eleccion == 2: Por la ventana se ve todo el bosque bajo la luna.
+si eleccion == 3: bruja: La azul. Es la única sin fantasmas. Bueno, casi sin fantasmas.
+
+Durante la cena, la bruja les cuenta que esa noche la posada está "un poquito encantada".
+? ¿Qué quiere decir eso?
+* Preguntarle | valor += 1
+* No preguntar: mejor no saber
+si eleccion == 1: bruja: Cada luna llena, los muebles se ponen a bailar. Es inofensivo. Casi siempre.
+
+[posada_noche]
+fondo noche
+A medianoche, una silla empieza a bailar sola. Luego la mesa. Luego todas las cucharas.
+mostrar burro centro
+burro: ¡SHREK! ¡Las sillas! ¡Las sillas tienen VIDA!
+? ¿Qué haces?
+* Bailar con las sillas | amor += 1, cuentos += 1
+* Esconderte debajo de la cama
+* Sostener la mesa para calmarla | valor += 1
+si eleccion == 1: Fiona se une. Bailan un vals con una silla, una escoba y un perchero.
+si eleccion == 2: Debajo de la cama ya hay una alfombra escondida. Te mira con miedo.
+si eleccion == 3: La mesa se calma y se recarga en ti como un perro cansado.
+
+? Un espejo de la pared empieza a hablar: "Pregúntame lo que quieras saber del futuro".
+* Preguntarle si los reyes te van a aceptar | sospecha += 1
+* Preguntarle si Fiona es feliz | amor += 1
+* No preguntarle nada
+si eleccion == 1: espejo: Uno de ellos sí. El otro tiene un secreto con alas.
+si eleccion == 2: espejo: Pregúntaselo a ella. Pero sí. Y mucho.
+si eleccion == 3: espejo: Prudente. La mayoría pregunta y luego se arrepiente.
+
+? Fiona y tú encuentran un pasillo secreto detrás de un cuadro.
+* Explorarlo juntos | amor += 1, valor += 1
+* Dejarlo para mañana
+si eleccion == 1: Al final hay una habitación llena de cartas viejas de enamorados que pasaron por la posada.
+si eleccion == 2: Por la mañana el pasillo ya no está. Nunca sabrán qué había.
+
+? ¿Dejan su propia carta en la habitación secreta?
+* Sí, la escriben juntos | amor += 2
+* Fiona escribe sola, tú no sabes qué poner
+* No
+si eleccion == 1: Escriben: "Aquí pasaron un ogro y una ogra. Fueron felices." Y lo firman con lodo.
+si eleccion == 2: Ella no te deja leerla. Solo sonríe y dice que la leerás algún día.
+
+? Burro llega corriendo: el gallinero de la bruja está abierto y las gallinas se escaparon.
+* Ayudar a atraparlas | cuentos += 1
+* Dejar que Burro se encargue | amistad += 1
+* Volver a dormir | gruñon += 1
+si eleccion == 1: Pasas una hora persiguiendo gallinas. Ganan las gallinas, tres a uno.
+si eleccion == 2: burro: ¡Confías en mí! Burro las regresa todas cantándoles una canción de cuna inventada.
+
+[posada_mañana]
+fondo taberna
+Al amanecer, el herrero llega y arregla la rueda.
+? ¿Cómo le pagas a la bruja?
+* Con dinero
+* Arreglándole el techo | cuentos += 1
+* Con tu receta de sopa de ojos de pescado | cuentos += 1
+si eleccion == 2: El techo queda tan bien que la bruja llora de emoción.
+si eleccion == 3: bruja: ¡Por fin una receta decente! Te da un frasquito de regalo.
+si eleccion == 3: $ suerte = 1
+
+? La bruja te advierte algo al despedirse: "Ten cuidado con las hadas que sonríen demasiado".
+* Agradecerle el consejo | sospecha += 2
+* No darle importancia
+si eleccion == 1: Guardas esas palabras. Algo te dice que te van a servir.
+
+? ¿Qué se llevan de recuerdo?
+* Una de las cucharas bailarinas
+* Nada
+* La tetera que habla (si quiere venir)
+si eleccion == 1: La cuchara se queda quietecita en tu bolsillo. Hasta la próxima luna llena.
+si eleccion == 3: La tetera prefiere quedarse con la bruja. Te despide con un silbido largo.
+ocultar todos
+ir capitulo9

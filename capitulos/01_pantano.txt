@@ -1,0 +1,180 @@
+# =====================================================================
+#  CAPÍTULO 1 — El pantano
+# =====================================================================
+
+[inicio]
+fondo pantano
+Hay un pantano lejos de todo. Lodo, mosquitos y un silencio perfecto.
+Ahí vive un ogro que hizo del "no molestar" una forma de vida.
+mostrar shrek centro
+shrek: Otro día glorioso sin nadie alrededor.
+? ¿Cómo empiezas la mañana?
+* Con un buen baño de lodo
+* Con un desayuno de gusanos asados
+* Pintando de nuevo el letrero de "PROHIBIDO PASAR" | gruñon += 1
+si eleccion == 1: El lodo está tibio, espeso y huele exactamente como debe oler. Perfecto.
+si eleccion == 2: Los gusanos crujen como palomitas. El secreto es no cocinarlos demasiado.
+si eleccion == 3: Agregas tres signos de exclamación más. Uno nunca es demasiado claro.
+
+Un grupo de aldeanos con antorchas se acerca a tu casa. Vienen a "cazar al ogro".
+? Los aldeanos tiemblan, pero no se van.
+* Rugirles hasta que huyan | gruñon += 1, valor += 1
+* Explicarles con calma que solo quieres paz | cuentos += 1
+* Esconderte y esperar a que se aburran
+si eleccion == 1: Sueltas un rugido que les apaga las antorchas. Corren tan rápido que dejan los zapatos.
+si eleccion == 2: shrek: Miren, no me como a nadie. Solo quiero que me dejen en paz. ¿Trato?
+si eleccion == 2: Los aldeanos se miran confundidos... y se van murmurando que el ogro "habla bonito".
+si eleccion == 3: Esperas detrás de un árbol. Media hora después se aburren y se van a comer.
+
+? Uno de los aldeanos dejó caer un libro de cuentos. ¿Qué haces con él?
+* Leerlo por curiosidad | cuentos += 1
+* Usarlo como papel de baño | gruñon += 1
+* Devolverlo dejándolo en el camino
+si eleccion == 1: Princesas, castillos, besos de amor verdadero... shrek: Puras tonterías. Aunque los dibujos están bonitos.
+si eleccion == 2: Al menos el papel es suave. La literatura sirve para algo.
+si eleccion == 3: Lo dejas sobre una piedra, a la vista. Alguien lo extrañará.
+
+? Al atardecer, ¿qué cenas?
+* Sopa de ojos de pescado
+* Pastel de lodo con moho
+* Nada: hoy no tienes hambre
+si eleccion == 1: Los ojos te miran desde el plato. Tú los miras de vuelta. Ganas tú.
+si eleccion == 2: El moho le da un toque cítrico. Nadie aprecia la buena cocina de pantano.
+si eleccion == 3: Te sientas junto al fuego. Por alguna razón te sientes un poco solo.
+
+fondo casa
+Esa noche, mientras te sientas a la mesa, escuchas ruidos afuera.
+Pasos. Muchos pasos. Voces. Alguien llora. Alguien canta desafinado.
+? ¿Qué haces?
+* Salir a ver de inmediato | valor += 1
+* Asomarte por la ventana primero
+* Taparte los oídos y seguir cenando | gruñon += 1
+si eleccion == 3: Los ruidos no paran. Al final, la curiosidad (y el enojo) te ganan.
+ir invasion
+
+[invasion]
+fondo pantano
+Tu pantano está lleno de criaturas de cuento. Brujas, enanos, ratones ciegos, hadas, cerditos...
+Docenas de tiendas de campaña ocupan TU lodo.
+shrek: ¿¡Qué hacen todos en mi casa!?
+mostrar pinocho derecha
+pinocho: ¡Nos mandaron aquí! Lord Farquaad nos desterró de su reino. Dice que somos "anormales".
+? ¿Qué le respondes a Pinocho?
+* "¿Desterrados? ¿Y por qué aquí?" | cuentos += 1
+* "¡Pues aquí tampoco se pueden quedar!" | gruñon += 1
+* "¿Tú eres el de la nariz que crece?"
+si eleccion == 1: pinocho: Nos dieron un papel con tu dirección. Firmado y sellado.
+si eleccion == 2: pinocho: ¡Pero no tenemos a dónde ir! Te lo juro. Y no estoy mintiendo, mira mi nariz.
+si eleccion == 3: pinocho: ¿Por qué todos me preguntan lo mismo? Sí. Y ahora mismo NO está creciendo.
+
+ocultar pinocho
+mostrar cerdito derecha
+cerdito: Disculpe, señor ogro. ¿Ha visto a un lobo por aquí? Siempre nos sigue.
+? Tres cerditos se esconden detrás de tu mesa.
+* "No hay lobos en mi pantano." | cuentos += 1
+* "Si lo encuentro, se lo doy de cena." | gruñon += 1
+* Señalar tu cama, donde algo se mueve
+si eleccion == 3: Bajo tus sábanas hay un lobo con gorro de dormir, leyendo tranquilamente.
+ocultar cerdito
+mostrar lobo derecha
+lobo: ¿Qué? Me dijeron que esta cama estaba libre. Tenía frío.
+? Un lobo en camisón está en TU cama.
+* Sacarlo a empujones | gruñon += 1, valor += 1
+* Pedirle con educación que se vaya | cuentos += 1
+* Preguntarle por qué usa camisón
+si eleccion == 1: Lo sacas por la puerta como un saco de papas. Desde afuera, se queja de tu hospitalidad.
+si eleccion == 2: lobo: Ya que lo pide así... Se va, llevándose tu almohada.
+si eleccion == 3: lobo: Es una larga historia que involucra a una abuelita. No quieres saber.
+ocultar lobo
+
+mostrar jengibre derecha
+Un hombrecito de galleta con un solo botón de goma cojea hacia ti.
+jengibre: ¡Ogro! Ese tal Farquaad me torturó. ¡Me quitó una pierna de galleta!
+? El Hombre de Jengibre está furioso.
+* "Lo siento. Eso suena horrible." | cuentos += 1
+* "¿Y eso a mí qué?" | gruñon += 1
+* "¿Al menos sabías bien?"
+si eleccion == 1: jengibre: ¡Gracias! Nadie me había dicho eso. Eres un ogro decente.
+si eleccion == 2: jengibre: ¡Pues debería importarte! ¡Hoy fui yo, mañana será tu lodo!
+si eleccion == 3: jengibre: ¡QUÉ PREGUNTA ES ESA!
+ocultar jengibre
+
+? Todas las criaturas te miran esperando algo.
+* Gritarles que se callen | gruñon += 1
+* Preguntar quién está a cargo
+* Contarlas para saber cuántos son
+si eleccion == 1: Silencio absoluto. Un ratón ciego tropieza con una olla. Luego silencio otra vez.
+si eleccion == 2: Todos señalan a todos. Nadie está a cargo. Eso explica mucho.
+si eleccion == 3: Llegas a setenta y tres y te rindes cuando un enano se cambia de lugar.
+
+Unos ratones ciegos han tirado tu frasco de gusanos. Unas hadas usan tu chimenea como columpio.
+? ¿Qué es lo primero que proteges?
+* Tu baño de lodo
+* Tu despensa
+* Tu letrero de "PROHIBIDO PASAR"
+si eleccion == 1: Lo cubres con una tabla. Nadie toca el baño de lodo. Nadie.
+si eleccion == 2: Llegas tarde: los tres ratones ya se comieron tus caracoles.
+si eleccion == 3: El letrero ya tiene un dibujo de corazón que alguien le agregó. Suspiras.
+
+? Ya es medianoche y nadie se va. ¿Qué haces?
+* Dormir afuera, junto al árbol
+* Dormir en tu cama, aunque esté apretada | cuentos += 1
+* No dormir: vigilar toda la noche | valor += 1
+si eleccion == 1: Duermes mal. Un búho te mira toda la noche como si te debiera algo.
+si eleccion == 2: Compartes la cama con dos enanos y un pato. Roncas más fuerte que todos.
+si eleccion == 3: Ves salir el sol con los ojos rojos. Ninguno de ellos se fue.
+
+fondo pantano
+Al amanecer, las criaturas siguen ahí. Han colgado ropa a secar en tus ramas.
+mostrar pinocho izquierda
+mostrar jengibre derecha
+pinocho: Señor ogro, ¿y si habla con Farquaad? A un ogro tal vez le hace caso.
+jengibre: ¡Sí! ¡Que le dé su merecido!
+? ¿Qué decides?
+* Ir a Duloc a exigir que se los lleven -> rumbo_duloc | valor += 1
+* Tratar de echarlos tú mismo primero -> echarlos
+* Rendirte: que se queden -> pantano_compartido
+
+[echarlos]
+ocultar todos
+Intentas echarlos de mil maneras durante toda la mañana.
+? ¿Qué método pruebas?
+* Rugir lo más fuerte que puedas | gruñon += 1
+* Ofrecerles comida si se van a otro lado
+* Mostrarles el mapa del bosque y señalar lejos
+si eleccion == 1: Las hadas te aplauden. Creen que es un espectáculo.
+si eleccion == 2: Se comen la comida y se quedan. Lógico.
+si eleccion == 3: Pinocho sostiene el mapa al revés. Todos caminan en círculo y regresan.
+mostrar pinocho centro
+pinocho: Señor, no podemos irnos. Si regresamos, Farquaad nos encierra.
+? Pinocho parece decir la verdad: su nariz no se mueve.
+* "Está bien. Iré a hablar con Farquaad." -> rumbo_duloc | cuentos += 1
+* "Entonces me rindo. Quédense." -> pantano_compartido
+
+[pantano_compartido]
+ocultar todos
+shrek: Bueno. Mientras nadie toque mi baño de lodo...
+Alguien toca tu baño de lodo. Luego alguien organiza un club de lectura en tu sala.
+Pasan los meses. Para tu horror, empiezas a disfrutar las noches de juegos de mesa.
+final compartido "Vecinos de cuento" "Nunca saliste del pantano... pero ya no estás solo."
+
+[rumbo_duloc]
+ocultar todos
+mostrar shrek centro
+? Antes de irte, ¿qué te llevas?
+* Una bolsa con comida | valor += 0
+* Tu garrote, por si acaso | valor += 1
+* Nada: los ogros viajan ligero
+si eleccion == 1: Gusanos en salmuera y pan de lodo. Para el camino.
+si eleccion == 2: Nunca lo has usado. Pero se ve muy convincente.
+si eleccion == 3: Te despides de tu pantano con un gruñido. Volverás pronto.
+mostrar pinocho derecha
+pinocho: ¡Gracias, señor ogro! ¡Volveremos a ser libres gracias a usted!
+? Las criaturas te despiden. ¿Cómo respondes?
+* Un saludo con la mano | cuentos += 1
+* "No lo hago por ustedes." | gruñon += 1
+* No decir nada
+si eleccion == 1: Todos aplauden. Un enano se suena la nariz con un pañuelo enorme.
+si eleccion == 2: pinocho: Lo sabemos. Igual, gracias.
+si eleccion == 3: Te vas sin mirar atrás. Bueno, solo una vez.
+ir capitulo2

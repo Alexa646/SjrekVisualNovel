@@ -1,0 +1,169 @@
+# =====================================================================
+#  CAPÍTULO 6 — El viaje de regreso
+# =====================================================================
+
+[capitulo6]
+fondo bosque
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+El camino a Duloc dura varios días. El primer día casi nadie habla.
+? ¿Quién elige el camino?
+* Tú | valor += 1
+* Fiona | amor += 1
+* Burro
+si eleccion == 1: Conoces bien estos bosques. Fiona no lo dice, pero se nota que está impresionada.
+si eleccion == 2: fiona: Por aquí. Lo vi muchas veces desde la torre. Y tenía razón.
+si eleccion == 3: Burro los lleva directo a un pantano equivocado. Pero tiene buena actitud.
+
+? Fiona se queja de que le duelen los pies. ¿Qué haces?
+* Le ofreces cargarla | amor += 1
+* Le haces unas sandalias de corteza | amor += 1, cuentos += 1
+* "Las princesas también caminan." | gruñon += 1
+si eleccion == 1: fiona: No hace falta... Bueno, solo un ratito.
+si eleccion == 2: fiona: ¿Tú hiciste esto? Son... sorprendentemente cómodas.
+si eleccion == 3: fiona: Claro que caminan. Y ahora mismo esta princesa camina muy enojada.
+
+? A la hora de comer, ¿qué cocinas?
+* Ratas asadas
+* Sopa de hongos del bosque | amor += 1
+* Lo que Fiona quiera
+si eleccion == 1: fiona: ¿Ratas? ... Están ricas. No le digas a nadie que dije eso.
+si eleccion == 2: fiona: ¡Esto está delicioso! ¿Dónde aprendiste a cocinar así?
+si eleccion == 3: fiona: ¿Yo? Pues... ratas asadas. ¿Qué? Pasé mucho tiempo sola en un castillo.
+
+mostrar burro centro
+burro: Princesa, ¿qué es lo primero que harás cuando seas reina?
+fiona: Ver el mar. Nunca lo he visto.
+? ¿Qué le dices?
+* "El mar es lo más bonito que existe." | amor += 1
+* "Está lleno de sal y cangrejos." | gruñon += 1
+* No dices nada, pero lo recuerdas
+si eleccion == 1: fiona: ¿Tú lo has visto? Cuéntame. Y le cuentas del ruido de las olas mientras caminan.
+si eleccion == 2: fiona: Suenas como alguien que nunca ha tenido un buen día en la playa.
+si eleccion == 3: Guardas eso en algún lugar. "Quiere ver el mar".
+$ sabe_mar = verdadero
+ocultar burro
+
+[bandidos]
+fondo bosque
+Al segundo día, un grupo de bandidos con sombreros de pluma les sale al paso.
+? El líder exige "a la doncella". ¿Qué haces?
+* Ponerte frente a Fiona | valor += 1
+* Esperar a ver qué hace Fiona | amor += 1
+* Rugirles | gruñon += 1
+si eleccion == 1: fiona: Muy amable. Pero hazte un poquito a un lado, por favor.
+si eleccion == 2: Fiona suspira, se recoge el vestido y da un paso al frente.
+si eleccion == 3: Los bandidos se asustan un poco. Solo un poco. Fiona da un paso al frente.
+
+Fiona derriba a los bandidos uno por uno con golpes, patadas y piruetas.
+? ¿Qué haces mientras tanto?
+* Ayudarla con los dos últimos | valor += 1
+* Mirar con la boca abierta
+* Proteger a Burro | amistad += 1
+si eleccion == 1: Entre los dos terminan rápido. Hacen buen equipo.
+si eleccion == 2: Burro y tú miran como si fuera una función de teatro.
+si eleccion == 3: burro: ¡Gracias, Shrek! Aunque creo que ella podía sola.
+
+? Fiona se acomoda el vestido como si nada.
+* "¿Dónde aprendiste a pelear así? Eso fue increíble." | amor += 2
+* "Yo los tenía controlados." | gruñon += 1
+* "Recuérdame no hacerte enojar."
+si eleccion == 1: fiona: Tuve mucho tiempo libre en esa torre. Por primera vez la ves sonreír de verdad.
+si eleccion == 2: fiona: Claro. Desde atrás de mí, se veía que los tenías muy controlados.
+si eleccion == 3: fiona: Buena idea. Muy buena idea.
+
+Uno de los bandidos le lanzó una flecha a Burro. Burro tiene la flecha atorada... en el trasero.
+burro: ¡Me muero! ¡Shrek, me muero! ¡Dile a la dragona que la quise!
+? ¿Qué haces?
+* Le sacas la flecha tú mismo | amistad += 1
+* Fiona busca hierbas para curarlo | amor += 1
+* Te ríes un poquito | gruñon += 1
+si eleccion == 1: Un tirón rápido. burro: ¡AAAY! ...Oye, ya no duele tanto.
+si eleccion == 2: Fiona pone una pasta de hierbas. Burro deja de llorar en dos minutos.
+si eleccion == 3: burro: ¡¿Te estás riendo?! ¡Esto es serio! ...Bueno, sí da risa.
+
+[pradera]
+fondo pradera
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+Al tercer día cruzan una pradera llena de flores.
+? Fiona encuentra una telaraña con un insecto atrapado. ¿Qué haces?
+* Hacerle un algodón de azúcar de telaraña | amor += 1
+* Ignorarla
+* Liberar al insecto | cuentos += 1
+si eleccion == 1: fiona: ¿Esto se come? ... ¡Está rico! Sabe a... pantano dulce.
+si eleccion == 3: El insecto se aleja zumbando. fiona: Qué tierno eres. Para ser ogro.
+
+? Fiona inflama un sapo como globo y te lo regala. ¿Qué haces?
+* Inflar una serpiente como globo para ella | amor += 2
+* Reírte | amor += 1
+* "Eso es asqueroso." | gruñon += 1
+si eleccion == 1: fiona: ¡Es precioso! Ahora tengo un globo de serpiente. Mi día está completo.
+si eleccion == 2: Ella se ríe contigo. Se ríen tanto que Burro pregunta qué se perdió.
+si eleccion == 3: fiona: Para alguien que come ojos de pescado, eres muy delicado.
+
+? Fiona eructa sin querer. Se pone roja. ¿Qué haces?
+* Eructar más fuerte | amor += 1
+* Fingir que no escuchaste
+* "Eso no fue muy de princesa."
+si eleccion == 1: Ella se ríe tanto que se cae al pasto. fiona: ¡Eso fue impresionante!
+si eleccion == 2: fiona: ...Gracias por no decir nada.
+si eleccion == 3: fiona: No, no lo fue. Y me encantó. Los dos se ríen.
+
+mostrar burro centro
+burro: Ustedes dos se llevan muy bien, ¿eh? Muuuy bien.
+? ¿Qué le contestas?
+* "Cállate, Burro."
+* "Es una buena compañera de viaje." | amor += 1
+* Te sonrojas y no dices nada
+si eleccion == 3: burro: ¡Ajá! ¡Lo sabía! Pero Fiona no lo nota. O hace como que no.
+
+? Fiona te pregunta qué harías si no fueras ogro.
+* "Lo mismo. Me gusta lo que soy." | amor += 1, valor += 1
+* "Tal vez tendría amigos."
+* "No sé. Nunca lo había pensado."
+si eleccion == 1: fiona: Eso es... muy raro de escuchar. La mayoría quiere ser otra cosa.
+si eleccion == 2: fiona: Ya tienes amigos. Mira, uno de ellos no se calla. burro: ¡Hola!
+si eleccion == 3: fiona: Yo lo pienso todo el tiempo. Lo de no ser lo que soy.
+ocultar burro
+ir mercado
+
+[fogata]
+fondo fogata
+Esa noche hacen una fogata. El sol empieza a meterse y Fiona se pone nerviosa.
+fiona: Tengo que... buscar un lugar para dormir. Sola. Ya.
+? ¿Qué le ofreces?
+* La cueva del lado, la más seca | amor += 1
+* "Duerme donde quieras."
+* "¿Por qué tanta prisa?"
+si eleccion == 1: fiona: Gracias. Es perfecta.
+si eleccion == 3: fiona: Asuntos de princesa. No preguntes. Por favor.
+
+Fiona se encierra. Burro y tú se quedan mirando las estrellas.
+mostrar burro derecha
+? Burro te mira con una ceja levantada.
+* Contarle que te gusta Fiona | amistad += 1, amor += 1
+* "No me mires así. Es solo un trabajo." | gruñon += 1
+* "¿Qué crees que esconde Fiona?" | sospecha_fiona = verdadero
+si eleccion == 1: shrek: Ella no es como pensaba. Pero ella es una princesa y yo soy un ogro.
+si eleccion == 1: burro: ¿Y eso qué? Yo tengo una dragona que me guiña el ojo. Todo es posible.
+si eleccion == 2: burro: Ajá. Solo un trabajo. Por eso la miras como si fuera lodo fresquecito.
+si eleccion == 3: burro: Yo creo que ronca. Y le da vergüenza. Todos tenemos secretos.
+
+burro: Shrek, ¿alguna vez has pensado en tener... no sé, una familia?
+? ¿Qué le dices?
+* "Antes no. Ahora... a veces." | amistad += 1
+* "Los ogros viven solos."
+* "Tú ya eres como un hermano molesto." | amistad += 2
+si eleccion == 2: burro: Eso no es una regla. Es una excusa.
+si eleccion == 3: burro: ¿¡Hermano!? ¡Shrek! Ven acá. Te abraza. Lo permites.
+
+? Burro se queda dormido recargado en ti. ¿Qué haces?
+* Lo dejas dormir | amistad += 1
+* Te mueves con cuidado
+* Lo empujas | gruñon += 1
+si eleccion == 1: Pasas la noche sin moverte. Es la primera vez que no te sientes solo.
+si eleccion == 3: burro: ¡Mmmh! Sigue durmiendo en el pasto, roncando feliz.
+ir capitulo7

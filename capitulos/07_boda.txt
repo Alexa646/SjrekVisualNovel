@@ -1,0 +1,251 @@
+# =====================================================================
+#  CAPÍTULO 7 — El molino y la boda
+# =====================================================================
+
+[capitulo7]
+fondo pradera
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+Al cuarto día, las torres de Duloc ya se ven a lo lejos. Llegarán mañana.
+fiona: Mañana conoceré a Farquaad.
+? ¿Qué le dices?
+* "Ojalá te haga feliz." | amor += 1
+* "Ojalá sea tan alto como su torre." | gruñon += 1
+* No dices nada
+si eleccion == 1: fiona: Gracias. Eso fue... muy amable.
+si eleccion == 2: fiona: ¿Qué quieres decir con eso? Burro se ríe tan fuerte que se ahoga.
+si eleccion == 3: El silencio pesa más de lo que quisieras.
+
+? Pasan junto a un río. ¿Qué hacen?
+* Le enseñas a Fiona a pescar con las manos | amor += 1
+* Le das de beber a Burro primero | amistad += 1
+* Siguen sin parar
+si eleccion == 1: Fiona atrapa un pez más grande que el tuyo. No te deja olvidarlo.
+si eleccion == 2: burro: ¡Agua fresca! Shrek, eres el mejor.
+
+? Fiona te pregunta qué harás cuando recuperes tu pantano.
+* "Estar solo. Como siempre."
+* "No sé. Ya no estoy tan seguro." | amor += 1
+* "Construir una cerca más alta." | gruñon += 1
+si eleccion == 1: fiona: Suena muy... tranquilo. Y muy solitario.
+si eleccion == 2: fiona: ¿Por qué no? Ella te mira como si supiera la respuesta.
+si eleccion == 3: fiona: ¿Más alta? ¿Para que no entre nadie... o para que no salgas tú?
+
+Llega el atardecer. Fiona se pone nerviosa otra vez.
+fondo atardecer
+fiona: Hay un molino viejo cerca. Dormiré ahí. Sola.
+? ¿Qué haces?
+* La acompañas hasta la puerta | amor += 1
+* La dejas ir
+* Le pides que se quede a ver la puesta de sol | amor += 1
+si eleccion == 3: fiona: Me encantaría... pero no puedo. De verdad no puedo. Y se va corriendo.
+
+ocultar fiona
+mostrar burro derecha
+? Burro va al molino a buscar a Fiona "para darle las buenas noches". ¿Qué haces?
+* Juntas valor para declararte y vas detrás | valor += 1, amor += 1
+* Te quedas recogiendo flores para mañana | amor += 1
+* Te quedas junto al fuego
+si eleccion == 1: Caminas hacia el molino con el corazón golpeándote las costillas.
+si eleccion == 2: Recoges un ramo de girasoles. Es el primer ramo de tu vida. Y vas hacia el molino.
+si eleccion == 3: Al rato, la curiosidad te gana y caminas hacia el molino.
+
+[molino]
+fondo molino
+ocultar todos
+Desde afuera escuchas a Fiona hablar con Burro adentro:
+fiona: ...Nadie se queda con un monstruo. Cuando vea lo que soy, va a salir corriendo.
+Sientes que algo se rompe en tu pecho. Crees que habla de ti.
+si sospecha_fiona: Pero recuerdas que Fiona esconde algo cada noche. ¿Y si no habla de ti?
+? Tienes la mano en la puerta.
+* Irte sin decir nada -> malentendido | gruñon += 1
+* Tocar la puerta y preguntarle directamente -> verdad_molino | amor += 1, valor += 1
+* Escuchar un poco más -> escuchar_mas
+
+[escuchar_mas]
+burro: Pero princesa, ¿y si le dices la verdad? Él es bueno. Aunque huela raro.
+fiona: No puedo. De día soy una princesa. De noche... esto. Nadie quiere una princesa ogra.
+Te quedas inmóvil. ¿Una princesa... ogra?
+? Ahora entiendes un poco más. ¿Qué haces?
+* Entrar -> verdad_molino | amor += 1
+* Irte a pensar -> pensar_noche
+
+[pensar_noche]
+fondo noche
+Caminas por el bosque toda la noche pensando.
+? ¿A qué conclusión llegas?
+* "Me da igual lo que sea. La quiero." | amor += 1, valor += 1
+* "Si ella no me lo dice, yo no pregunto."
+si eleccion == 1: ir verdad_molino
+Al amanecer regresas sin decir nada. Fiona no sabe que la escuchaste.
+ir boda_sola
+
+[verdad_molino]
+fondo molino
+mostrar fiona centro
+Abres la puerta. Fiona se cubre la cara, pero ya es tarde: bajo la luz de la luna, ella es... una ogra.
+fiona: Es una maldición. De día, princesa. De noche, esto. Solo se rompe con un beso de amor verdadero.
+fiona: Hablaba de mí, no de ti. Nunca de ti.
+? ¿Qué le dices?
+* "Pues a mí no me pareces horrible. Para nada." | amor += 2
+* "¿Por eso te escondías?" | amor += 1
+* Quedarte mudo de la sorpresa
+si eleccion == 1: Fiona te mira, sin saber si reír o llorar. Hace las dos cosas.
+si eleccion == 2: fiona: Todas las noches. Desde que tengo memoria.
+si eleccion == 3: fiona: ¿Ves? Esto es lo que temía. ...Pero no te fuiste. Eso ya es algo.
+$ secreto = verdadero
+? Fiona te pregunta si se lo vas a contar a alguien.
+* "Nunca." | amor += 1
+* "Solo a Burro... que ya lo sabe."
+si eleccion == 2: mostrar burro derecha
+si eleccion == 2: burro: ¡Yo no dije nada! ...Bueno, me enteré antes, pero no dije nada.
+si amor >= 28 -> sin_malentendidos
+fiona: Gracias. Pero mañana tengo que casarme con Farquaad. Di mi palabra. Y una princesa cumple su palabra.
+? ¿Qué haces?
+* Pedirle que no se case | amor += 1
+* Respetar su decisión
+si eleccion == 1: fiona: No es tan fácil. Pero... gracias por pedírmelo.
+ir boda_sola
+
+[malentendido]
+fondo pantano
+ocultar todos
+Al amanecer, Farquaad llega por Fiona. Tú le das la espalda sin explicar nada.
+Fiona, dolida, acepta casarse esa misma tarde.
+? Burro intenta hablar contigo. ¿Qué haces?
+* Gritarle que se vaya | gruñon += 2, amistad -= 2
+* Decirle que no quieres hablar
+* Escucharlo | amistad += 1
+si eleccion == 1: burro: ...Está bien. Me voy. Y se va, cabizbajo.
+si eleccion == 3: burro: Shrek, creo que entendiste todo mal. Pero no me dejas explicar.
+Regresas a tu pantano, ahora vacío. Es justo lo que querías.
+? ¿Qué haces en tu pantano vacío?
+* Darte un baño de lodo
+* Construir una cerca más alta | gruñon += 1
+* Mirar las flores que recogiste | amor += 1
+si eleccion == 3: Las flores siguen en tu bolsillo, aplastadas. No puedes tirarlas.
+si amistad >= 12 -> burro_regresa
+final solo "Solo en el pantano" "Recuperaste tu pantano y perdiste todo lo demás."
+
+[burro_regresa]
+mostrar burro derecha
+mostrar shrek izquierda
+burro: ¡Ey! Escuché lo que creíste escuchar. Pero ella no hablaba de ti, cabeza de lodo. ¡Hablaba de ELLA!
+shrek: ...¿Qué?
+? Burro te cuenta todo. ¿Cómo reaccionas?
+* "Perdón, Burro. Por todo." | amistad += 2
+* "¿Por qué no me lo dijiste antes?"
+si eleccion == 1: burro: Perdonado. Ahora, ¡muévete! ¡La boda es al atardecer!
+si eleccion == 2: burro: ¡Porque no me dejabas! ¡Muévete, la boda es al atardecer!
+ir carrera
+
+[boda_sola]
+fondo pantano
+ocultar todos
+Fiona se va con Farquaad al amanecer. Te quedas pensando en lo que viviste con ella.
+mostrar burro centro
+burro: ¿Y te vas a quedar ahí sentado? ¡Esa princesa te quiere, y tú a ella!
+? ¿Qué haces?
+* Ir a detener la boda -> carrera | valor += 1
+* "Ella eligió. No voy a meterme." -> solo_eleccion
+
+[solo_eleccion]
+Respetas su palabra. Regresas a tu pantano en silencio.
+final solo "Solo en el pantano" "Recuperaste tu pantano y perdiste todo lo demás."
+
+[carrera]
+fondo bosque
+? ¿Cómo llegan a Duloc a tiempo?
+* (si dragona_amiga) Burro llama a la Dragona -> carrera_dragona
+* Corren con todas sus fuerzas -> carrera_pie
+
+[carrera_pie]
+si dragona >= 3: Un rugido llena el cielo. ¡La Dragona vino sola a buscar a Burro!
+si dragona >= 3 -> carrera_dragona
+Corren hacia Duloc tan rápido como pueden, pero el camino es largo.
+Cuando llegan, las campanas ya repican. La ceremonia terminó.
+fondo iglesia
+Fiona sale de la iglesia del brazo de Farquaad. Te ve. Demasiado tarde.
+final tarde "Demasiado tarde" "Faltó un amigo con alas."
+
+[carrera_dragona]
+burro: ¡Tengo un plan! Bueno, tengo una novia. Que es un plan.
+La Dragona aterriza frente a ustedes y les ofrece su lomo.
+? ¿Cómo te subes?
+* De un salto | valor += 1
+* Con cuidado, dándole las gracias | dragona += 1
+si eleccion == 2: dragona: Grrr. ♥ Tú me caes bien, ogro.
+ir boda
+
+[boda]
+fondo iglesia
+ocultar todos
+mostrar farquaad izquierda
+mostrar fiona derecha
+Entras a la iglesia justo cuando el sacerdote pregunta si alguien se opone.
+shrek: ¡Yo me opongo!
+farquaad: ¿Tú? ¿Qué hace un ogro en MI boda?
+? Todos te miran. Fiona también.
+* (si amor >= 18) "Fiona, te amo. Así, como seas de día o de noche." -> felices
+* "Vine a decir que... Farquaad es un pésimo rey." -> boda_duloc
+* "Fiona, no te cases con él. Él no te conoce." -> boda_duda | amor += 1
+
+[boda_duda]
+fiona: ¿Y tú sí me conoces?
+? Fiona espera una respuesta.
+* (si secreto) "Sí. Sé lo que pasa cuando se pone el sol. Y no me importa." -> felices | amor += 2
+* "Te conozco lo suficiente para saber que mereces algo mejor." -> boda_duloc | amor += 1
+
+[boda_duloc]
+farquaad: Gracias por tu opinión. ¡Guardias!
+Fiona te mira esperando algo más. Ese algo nunca llega.
+La Dragona entra rompiendo una pared y se traga a Farquaad de un bocado. Pero Fiona ya se ha ido.
+final duloc "Rey por accidente" "El pueblo de Duloc te pide que gobiernes. Lo único que querías era tu pantano."
+
+[felices]
+fondo atardecer
+Sale el último rayo de sol. Frente a todos, Fiona se transforma en ogra.
+farquaad: ¡Qué horror! ¡Guardias, llévense a esa... cosa! ¡Sigo siendo rey!
+La Dragona irrumpe por el ventanal y resuelve el problema de Farquaad de un solo bocado.
+ocultar farquaad
+mostrar shrek izquierda
+? ¿Qué haces?
+* Besarla
+* Preguntarle primero si quiere | amor += 1
+si eleccion == 2: fiona: Llevo toda la vida esperando esa pregunta. Sí.
+Te acercas a Fiona y la besas. Una luz enorme la envuelve...
+Cuando se apaga, Fiona sigue siendo una ogra.
+fiona: No entiendo. Se suponía que me vería hermosa.
+shrek: Te ves como tú. Y eso es lo único que yo quería ver.
+fondo pantano
+Unos días después, el pantano se llena otra vez. Esta vez de invitados a una boda. Y no te molesta ni un poco.
+$ fin_parte1 = 1
+ir fin_primera_parte
+
+[sin_malentendidos]
+fiona: ¿De verdad no te parece horrible?
+shrek: Me pareces la persona más interesante que he conocido. Y conozco a un burro que habla.
+fiona: Entonces no me voy a casar con Farquaad. Que se busque otra princesa.
+Fiona te toma la mano. La besas antes de que salga el sol, sin testigos, sin boda, sin dragones.
+fondo atardecer
+A la mañana siguiente, Fiona sigue siendo una ogra. Y por primera vez en su vida, eso la hace feliz.
+Farquaad espera a su novia toda la tarde en la iglesia. Nunca llega.
+fondo pantano
+mostrar shrek izquierda
+mostrar fiona derecha
+$ fin_parte1 = 2
+ir fin_primera_parte
+
+[fin_primera_parte]
+fondo pantano
+? FIN DE LA PRIMERA PARTE. ¿Quieres seguir con la segunda parte?
+* Sí, continuar: "Muy Muy Lejano" -> capitulo8
+* No, terminar aquí -> terminar_parte1
+
+[terminar_parte1]
+si fin_parte1 == 2 -> final_secreto
+final felices "Felices para siempre" "El amor verdadero te acepta tal como eres."
+
+[final_secreto]
+final secreto "Sin malentendidos" "Final secreto: hablaron a tiempo y se ahorraron la boda y el dragón."

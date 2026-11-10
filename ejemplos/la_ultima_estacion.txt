@@ -1,0 +1,247 @@
+# =====================================================================
+#  LA ÚLTIMA ESTACIÓN — historia de ejemplo con 6 finales
+#  Las líneas que empiezan con # son comentarios: el juego las ignora.
+# =====================================================================
+
+titulo "La última estación"
+
+# --- Personajes:  personaje id "Nombre visible" #color
+personaje nora "Nora" #e8b86d
+personaje iker "Iker" #7fb3d5
+personaje yo "Tú" #d9d9d9
+
+# --- Fondos de color (si pones assets/fondos/<id>.png se usa la imagen)
+#     fondo_def id #color_arriba #color_abajo
+fondo_def vestibulo #3a2d4a #0d0a14
+fondo_def reloj #24384d #070b10
+fondo_def taquilla #4a321c #120c07
+fondo_def banco #263744 #0a0f14
+fondo_def tunel #101018 #000000
+fondo_def anden #1f2c4f #05070f
+fondo_def calido #f2c98a #7a3e22
+fondo_def azul #1c3f6e #03060f
+fondo_def blanco #f7f5ef #cfd6db
+
+
+# ---------------------------------------------------------------------
+[inicio]
+fondo vestibulo
+Abres los ojos. Estás sentado en un banco de madera.
+Una estación de tren. Vacía. El aire huele a lluvia, pero aquí dentro no llueve.
+yo: ¿Dónde... estoy?
+El reloj enorme del vestíbulo marca las 11:59. La aguja de los segundos no se mueve.
+No recuerdas cómo llegaste. Ni siquiera estás seguro de recordar tu nombre.
+ir vestibulo
+
+
+# ---------------------------------------------------------------------
+# El vestíbulo es el "centro": puedes visitar DOS de tres lugares
+# antes de que llegue el tren. Lo que elijas cambia los finales posibles.
+[vestibulo]
+fondo vestibulo
+ocultar todos
+si visitas >= 2 -> anuncio
+? El vestíbulo está en silencio. ¿Qué haces?
+* (si not visto_reloj) Acercarte al reloj detenido -> reloj
+* (si not visto_taquilla) Ir a la taquilla iluminada -> taquilla
+* (si not visto_iker) Hablar con el hombre del último banco -> desconocido
+* (si not visto_tunel) Caminar hacia el túnel oscuro de las vías -> tunel
+
+
+# ---------------------------------------------------------------------
+[reloj]
+fondo reloj
+$ visto_reloj = verdadero, visitas += 1, recuerdo += 1
+Te acercas. El cristal del reloj está empañado desde dentro.
+Por un instante ves algo en el reflejo: luces de faros bajo la lluvia. Un volante entre tus manos.
+yo: Yo iba... manejando.
+? El cristal parece latir, como si respirara.
+* Tocar el cristal -> reloj_tocar | valor += 1, recuerdo += 1
+* Dar un paso atrás -> vestibulo
+
+[reloj_tocar]
+El cristal está tibio. Escuchas un pitido lejano, rítmico. Bip. Bip. Bip.
+Como una máquina de hospital.
+yo: No estoy... muerto. ¿Verdad?
+El pitido se apaga. El reloj sigue en las 11:59.
+ir vestibulo
+
+
+# ---------------------------------------------------------------------
+[taquilla]
+fondo taquilla
+$ visto_taquilla = verdadero, visitas += 1
+mostrar nora centro
+Detrás del vidrio hay una mujer con uniforme antiguo y una gorra de conductora.
+nora: Buenas noches. O buenos días. Aquí nunca está muy claro.
+nora: ¿Viene por un boleto?
+? Nora te mira con paciencia infinita.
+* "¿A dónde van los trenes?" -> taquilla_info | confianza_nora += 1
+* "Quiero irme de aquí. Ya." -> taquilla_exigir | valor += 1
+
+[taquilla_info]
+nora: Solo pasan dos. El tren cálido regresa al lugar de donde viniste.
+nora: El tren azul... sigue adelante. No vuelve.
+nora: Para el cálido hace falta boleto. Y un boleto no sirve de nada si no recuerdas quién eres.
+Desliza un boleto en blanco por debajo del vidrio.
+$ boleto = verdadero
+? El papel se siente extrañamente pesado.
+* "Gracias, Nora." -> taquilla_gracias | confianza_nora += 1
+* Guardarlo sin decir nada -> vestibulo
+
+[taquilla_gracias]
+nora: Hace mucho que nadie me daba las gracias.
+nora: Si alguna vez no quiere irse... venga a hablar conmigo antes del último tren.
+ir vestibulo
+
+[taquilla_exigir]
+nora: Todos quieren irse ya. Nadie se va sin saber quién es.
+nora: Vuelva cuando recuerde algo.
+Cierra la ventanilla con un golpe seco.
+ir vestibulo
+
+
+# ---------------------------------------------------------------------
+[desconocido]
+fondo banco
+$ visto_iker = verdadero, visitas += 1
+mostrar iker centro
+Un hombre joven sostiene un sobre arrugado. Lo mira como si quemara.
+iker: Perdón. ¿Sabes leer? Yo lo intento y las letras se mueven.
+? El sobre tiene manchas de agua.
+* "Déjame intentarlo." -> leer_carta
+* "¿Quién eres?" -> iker_quien | confianza_iker += 1
+* "Lo siento, tengo mis propios problemas." -> vestibulo
+
+[iker_quien]
+iker: Iker. Creo. Es lo único que recuerdo.
+iker: Eso y un ruido de frenos.
+Sientes un escalofrío. Tú también recuerdas ese ruido.
+ir vestibulo
+
+[leer_carta]
+$ carta = verdadero, recuerdo += 1
+Tomas el sobre. Para ti las letras están quietas.
+Es una disculpa. Alguien que se pasó un alto en la lluvia. Alguien que chocó contra otro auto.
+Al final hay una firma: Iker. Y abajo, un nombre que reconoces de golpe. El tuyo.
+iker: ¿Qué dice?
+? Iker espera tu respuesta.
+* Decirle la verdad -> carta_verdad | confianza_iker += 2
+* "Nada importante." -> carta_mentira
+
+[carta_verdad]
+yo: Dice que lo sientes. Que chocaste con otro auto esa noche.
+yo: Y el otro conductor... era yo.
+iker: ...
+iker: Entonces te debo mucho más que una carta.
+ir vestibulo
+
+[carta_mentira]
+iker: Ah. Bueno. Gracias de todos modos.
+Le devuelves el sobre. Te pesa más a ti que a él.
+ir vestibulo
+
+
+# ---------------------------------------------------------------------
+[tunel]
+fondo tunel
+ocultar todos
+$ visto_tunel = verdadero
+El túnel huele a hierro y a tierra mojada. Más adentro, alguien dice tu nombre.
+Es una voz conocida. Muy conocida.
+? La voz te llama otra vez.
+* Seguir caminando hacia la voz -> final_vias
+* Regresar a la luz del vestíbulo -> vestibulo | valor += 1
+
+[final_vias]
+Caminas. La voz se aleja un paso por cada paso que das.
+Cuando miras atrás, la estación ya no existe. Solo vías, y oscuridad, en las dos direcciones.
+final vias "Por las vías" "Hay voces que conviene no seguir."
+
+
+# ---------------------------------------------------------------------
+[anuncio]
+fondo anden
+ocultar todos
+Una campana resuena por toda la estación.
+"Último tren. Andén uno." La voz sale de todas partes a la vez.
+Dos trenes entran despacio: uno de luz cálida, como una cocina en invierno. Otro azul, frío y silencioso.
+mostrar nora derecha
+nora: Ya es hora. Elija bien.
+? ¿Qué haces?
+* (si boleto) Subir al tren cálido con tu boleto -> tren_calido
+* (si carta and confianza_iker >= 2) Buscar a Iker antes de subir -> iker_final
+* (si confianza_nora >= 2) Preguntarle a Nora si puedes quedarte -> quedarse
+* (si recuerdo >= 3) Mirar el reloj una última vez -> reloj_final
+* Subir al tren azul, que no pide boleto -> tren_azul
+
+
+[tren_calido]
+fondo calido
+ocultar todos
+Le entregas el boleto al revisor. Lo mira a contraluz.
+si recuerdo >= 1 -> regreso
+El boleto sigue en blanco. No recuerdas lo suficiente para llenarlo.
+El revisor niega con la cabeza y te señala el otro andén.
+ir tren_azul
+
+[regreso]
+Poco a poco, en el papel aparece un nombre. El tuyo.
+El tren arranca. Afuera empieza a amanecer.
+fondo blanco
+Bip. Bip. Bip. Luz blanca. Alguien aprieta tu mano y llora de alivio.
+final regreso "De vuelta a casa" "Recordaste lo suficiente para volver."
+
+
+[tren_azul]
+fondo azul
+ocultar todos
+Subes al tren azul. Nadie te pide nada.
+Los asientos son cómodos. Las ventanas solo muestran tu reflejo.
+Con cada estación que pasa, recuerdas un poco menos. Y te preocupa un poco menos.
+final eterno "Pasajero eterno" "Hay trenes que no regresan."
+
+
+[quedarse]
+mostrar nora centro
+yo: ¿Y si no subo a ninguno?
+nora: Entonces alguien tendría que cuidar la taquilla.
+nora: Llevo tanto tiempo aquí que ya no recuerdo mi propio tren.
+Se quita la gorra y te la ofrece.
+nora: Cuando llegue alguien perdido... no le cierre la ventanilla.
+Nora sube al tren cálido. Por primera vez la ves sonreír.
+El reloj sigue en las 11:59. Tú esperas al siguiente viajero.
+final guardian "El nuevo guardián" "Te quedaste para que otros encontraran el camino."
+
+
+[iker_final]
+fondo anden
+ocultar nora
+mostrar iker centro
+Iker está al borde del andén, con el sobre todavía en la mano.
+iker: Tengo un boleto. Solo uno. Apareció en mi bolsillo cuando me dijiste la verdad.
+Lo rompe por la mitad, con cuidado, y te da una parte.
+iker: Si fue por mí que estás aquí, no me voy sin ti.
+Suben juntos al tren cálido. Las dos mitades del boleto se llenan con dos nombres.
+fondo blanco
+ocultar todos
+Despiertas en un hospital. En la cama de al lado, un joven con vendas te mira y asiente.
+final juntos "Dos boletos" "El perdón también es una forma de volver."
+
+
+[reloj_final]
+fondo reloj
+ocultar todos
+Te acercas al reloj. Ahora lo recuerdas todo: la lluvia, los frenos, el pitido del hospital.
+El reloj no está detenido. Te está esperando a ti.
+? Las manecillas tiemblan bajo tus dedos.
+* Empujar la aguja hasta las 12:00 -> verdad
+* Dejarlo en paz y volver al andén -> anuncio
+
+[verdad]
+La aguja avanza. Un solo clic.
+El sonido rebota por toda la estación, y la estación empieza a deshacerse como azúcar en agua.
+fondo blanco
+Nora, Iker, los trenes, el túnel: todo era una pausa. El último segundo antes de decidir.
+Abres los ojos de verdad. Son las 12:00 del mediodía y alguien grita tu nombre de alegría.
+final verdad "Las 11:59" "Final secreto: entendiste qué era la estación."

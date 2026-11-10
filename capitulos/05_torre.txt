@@ -1,0 +1,177 @@
+# =====================================================================
+#  CAPÍTULO 5 — La princesa de la torre
+# =====================================================================
+
+[capitulo5]
+fondo torre
+ocultar todos
+mostrar shrek izquierda
+La escalera de la torre parece no terminar nunca.
+? ¿Cómo subes?
+* Corriendo de dos en dos escalones | valor += 1
+* Despacio, para no llegar sin aire
+* Contando los escalones
+si eleccion == 1: Llegas arriba resoplando como fuelle.
+si eleccion == 2: Llegas arriba presentable. Más o menos.
+si eleccion == 3: Son 1,024. Alguien construyó esto para fastidiar.
+
+Frente a la puerta te detienes. Del otro lado está la princesa.
+? ¿Qué haces antes de entrar?
+* Te arreglas un poco | amor += 1
+* Tocas la puerta
+* Pateas la puerta | gruñon += 1
+si eleccion == 1: Te limpias el lodo de la cara. Bueno, de la mitad de la cara.
+si eleccion == 2: Nadie contesta. Una princesa encerrada no espera visitas educadas.
+si eleccion == 3: La puerta se abre de golpe. Muy dramático.
+
+mostrar fiona derecha
+Una princesa finge dormir sobre una cama, con un ramo de flores en las manos y la pose perfecta.
+? ¿Cómo la despiertas?
+* Tocándole el hombro con cuidado | amor += 1
+* Sacudiéndola | gruñon += 1
+* Diciéndole en voz alta que ya llegó su rescate
+si eleccion == 1: fiona: ...Por fin. Mi valiente caballero.
+si eleccion == 2: fiona: ¡Oye! ...Ejem. Quiero decir: por fin, mi valiente caballero.
+si eleccion == 3: fiona: Tú... me has rescatado. Qué emoción. Esto debería ir más despacio.
+
+fiona: Ahora es cuando me besas y declaras tu amor eterno, según la tradición.
+? ¿Qué respondes?
+* "No vine a besarte. Vine a sacarte de aquí."
+* "La tradición no dice nada de besos con desconocidos." | amor += 1
+* "Primero lo primero: hay una dragona allá abajo."
+si eleccion == 2: fiona: ...Esa respuesta no estaba en ningún libro. Interesante.
+si eleccion == 3: fiona: Sí, la conozco. Nos vemos todos los días. Es una vecina difícil.
+
+Te quitas el casco. Fiona se queda helada.
+fiona: Eres... un ogro.
+? Fiona espera una explicación.
+* "Sé que no soy lo que esperabas. Pero te voy a sacar de aquí." | amor += 2
+* "Sorpresa. ¿Nos vamos o esperas a otro?" | gruñon += 1
+* "Me mandó Lord Farquaad."
+si eleccion == 1: fiona: ...Al menos eres sincero. Eso ya es más que muchos caballeros.
+si eleccion == 2: fiona: Qué encantador. Seguro en tu casa te extrañan muchísimo.
+si eleccion == 3: fiona: ¿Farquaad? ¿Quién es ese? ¿Es un príncipe? ¿Es apuesto?
+si eleccion == 3: shrek: Es... bajito de carácter. Y de todo lo demás.
+
+? Fiona se niega a moverse sin una explicación. ¿Qué haces?
+* Explicarle el trato con Farquaad | amor += 1
+* Cargarla sobre el hombro | gruñon += 1
+* Decirle que el castillo se está derrumbando
+si eleccion == 1: fiona: Así que soy parte de un trato. Qué romántico. Bueno, al menos eres honesto.
+si eleccion == 2: fiona: ¡Bájame! ¡Esto no es digno de una princesa!
+si eleccion == 3: Justo entonces, el techo tiembla. No era mentira.
+ir escape_castillo
+
+[escape_castillo]
+fondo castillo
+Abajo, un rugido sacude el castillo entero.
+si dragona_amiga -> escape_tranquilo
+La dragona viene furiosa por ustedes.
+? ¿Por dónde huyen?
+* Por la escalera principal | valor += 1
+* Por una ventana hacia el techo
+* Por el pasillo de las armaduras
+si eleccion == 1: La dragona escupe fuego y las escaleras se vuelven tobogán.
+si eleccion == 2: Se deslizan por el techo como trineo.
+si eleccion == 3: Las armaduras caen como dominó detrás de ustedes, frenando a la dragona.
+
+mostrar burro centro
+burro: ¡SHREK! ¡Ayuda! ¡Ya no le gusto tanto!
+? Burro corre hacia ustedes con la dragona detrás.
+* Lanzarle una armadura a la dragona | valor += 1
+* Agarrar a Burro y a Fiona y correr | amistad += 1
+* Dejar que Fiona decida
+si eleccion == 3: fiona: ¡Por aquí! Fiona conoce el castillo mejor que nadie.
+si eleccion == 3: $ amor += 1
+? Llegan al puente. La dragona escupe fuego detrás.
+* Cruzar corriendo | valor += 1
+* Cortar las cuerdas cuando estén del otro lado | fama += 1
+* Encadenar a la dragona con un collar caído
+si eleccion == 1: El puente se incendia detrás de ustedes. Llegan con las colas humeando.
+si eleccion == 2: El puente cae a la lava. La dragona se queda del otro lado, rugiendo.
+si eleccion == 3: La cadena se engancha en el collar de la dragona. Queda atorada, furiosa.
+ir afuera_castillo
+
+[escape_tranquilo]
+La dragona no los persigue. Se despide de Burro desde una ventana con un pañuelo enorme.
+mostrar burro centro
+burro: ¡Volveré, preciosa!
+fiona: ¿Por qué el dragón le está diciendo adiós a tu burro?
+? ¿Cómo se lo explicas a Fiona?
+* "Larga historia. Muy romántica." | amor += 1
+* "Burro tiene un don." | amistad += 1
+* "No preguntes."
+si eleccion == 1: fiona: Me encantan las historias románticas. Aunque esta sea... rara.
+si eleccion == 2: burro: ¡Un don! ¡Shrek dijo que tengo un don!
+? La dragona les ofrece algo antes de irse.
+* Aceptar una escama brillante como recuerdo | dragona += 1
+* Agradecerle con una reverencia | dragona += 1, cuentos += 1
+* Irse rápido, por si acaso
+si eleccion == 1: La escama brilla en tu bolsillo como un pequeño sol.
+si eleccion == 2: dragona: Grrr... ♥ Hasta las dragonas aprecian los modales.
+ir afuera_castillo
+
+[afuera_castillo]
+fondo bosque
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+Ya fuera del castillo, Fiona se arregla el cabello y te mira con seriedad.
+fiona: Bueno, caballero... u ogro. Me rescataste. Ahora quiero conocer a mi verdadero amor.
+? ¿Qué le dices?
+* "Te llevaré con Farquaad. Ese es el trato."
+* "¿Y si tu verdadero amor no es quien esperas?" | amor += 1
+* "Primero hay que caminar tres días."
+si eleccion == 2: fiona: ¿Qué quieres decir con eso? ...Olvídalo. No quiero saber.
+si eleccion == 3: fiona: ¿TRES días? ¿Sin carruaje? ¿Sin caballos blancos?
+
+mostrar burro centro
+burro: ¡Princesa! ¡Soy Burro! Un placer. ¿Te gustan las canciones?
+fiona: ¿Un burro que habla? Este rescate es cada vez más extraño.
+? ¿Cómo presentas a Burro?
+* "Es mi amigo." | amistad += 2
+* "Es... un burro que me sigue."
+* "No le hagas caso, nunca se calla." | gruñon += 1
+si eleccion == 1: Burro se queda callado por primera vez en su vida. Tiene los ojos brillosos.
+si eleccion == 2: burro: Lo que quiere decir es que somos mejores amigos.
+si eleccion == 3: burro: ¡Oye! ...Bueno, es verdad, pero no tenías que decirlo así.
+
+fiona: Antes de irnos... quiero ver tu cara sin el casco otra vez.
+? ¿Te quitas el casco?
+* Sí, sin vergüenza | amor += 1, valor += 1
+* Te lo dejas puesto | gruñon += 1
+si eleccion == 1: Fiona te mira un buen rato. No se asusta. Solo te mira.
+si eleccion == 2: fiona: Como quieras. Igual ya sé cómo eres.
+fiona: Sigo esperando a mi príncipe. Pero... gracias por sacarme de ahí.
+? ¿Cómo respondes?
+* "De nada, princesa." | amor += 1
+* "No fue por ti. Fue por mi pantano." | gruñon += 1
+* Gruñir algo que suena a "de nada"
+si eleccion == 2: fiona: Claro. Por supuesto. Tu pantano.
+si eleccion == 3: fiona: Voy a tomar eso como un "de nada".
+
+[primer_campamento]
+fondo noche
+La primera noche fuera del castillo acampan junto a un arroyo.
+? ¿Quién monta guardia?
+* Tú | valor += 1
+* Burro | amistad += 1
+* Fiona se ofrece | amor += 1
+si eleccion == 1: Pasas la noche despierto. Nada pasa, salvo un búho chismoso.
+si eleccion == 2: Burro se duerme a los cinco minutos. Igual nadie los ataca.
+si eleccion == 3: fiona: Prefiero estar despierta de noche. Lo dice muy rápido y cambia de tema.
+
+? Fiona tiene frío. ¿Qué haces?
+* Le prestas tu chaleco | amor += 1
+* Haces la fogata más grande
+* Le dices que se acerque a Burro, que es calientito
+si eleccion == 1: fiona: Huele a pantano. ...Pero calienta mucho. Gracias.
+si eleccion == 3: burro: ¡Soy una cobija con patas! ¡A su servicio, princesa!
+
+? Antes de dormir, Fiona te pregunta por qué los ogros viven solos.
+* Contarle la verdad: la gente siempre huye | amor += 1
+* "Porque nos gusta." | gruñon += 1
+* "No todos. Algunos tienen un burro."
+si eleccion == 1: fiona: Yo no huí. shrek: Todavía no. fiona: Ya veremos.
+si eleccion == 3: Burro, medio dormido, levanta un casco en señal de victoria.
+ir capitulo6

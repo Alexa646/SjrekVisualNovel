@@ -1,0 +1,247 @@
+# =====================================================================
+#  CAPÍTULO 13 — El baile real
+# =====================================================================
+
+[capitulo13]
+fondo baile
+ocultar todos
+mostrar shrek izquierda
+El salón de baile brilla con mil velas. Todo el reino está aquí, con máscaras y vestidos enormes.
+? ¿Cómo entras?
+* Por la puerta, con la cabeza en alto | valor += 1, fama += 1
+* Detrás de un grupo de nobles | gato += 1
+* Por una ventana alta
+si eleccion == 1: Un heraldo intenta anunciarte y se queda en blanco. heraldo: Eh... ¿el señor... ogro?
+si eleccion == 2: Nadie nota que hay un ogro detrás de la duquesa. Es una duquesa muy ancha.
+si eleccion == 3: Aterrizas sobre la mesa de los postres. Un pastel de seis pisos amortigua la caída.
+
+? Un noble te pregunta quién eres.
+* "El esposo de la princesa." | valor += 1
+* "Un invitado más."
+* "Nadie importante."
+si eleccion == 1: El noble se desmaya en los brazos de su esposa.
+si eleccion == 3: noble: Ah, como yo. Bienvenido, nadie importante.
+
+? Ves la mesa del banquete. Tienes hambre.
+* Comer algo rápido | gruñon += 1
+* Ignorarla: hay cosas más importantes | valor += 1
+* Guardar unos panecillos para Burro | amistad += 1
+si eleccion == 1: Te comes un cisne de mantequilla entero. Es decoración. Ups.
+si eleccion == 3: Burro, desde alguna parte, siente que alguien lo quiere.
+
+? Una banda de músicos toca. Te piden que bailes.
+* Bailar con la duquesa | fama += 1
+* "No bailo." | gruñon += 1
+* Seguir buscando a Fiona
+si eleccion == 1: Le pisas los pies once veces. Ella dice que es el mejor baile de su vida.
+si eleccion == 2: La duquesa se va ofendida. Tú sigues buscando.
+
+[buscar_fiona]
+fondo baile
+? ¿Dónde buscas a Fiona?
+* En el balcón | amor += 1
+* Cerca del trono
+* En la pista de baile
+si eleccion == 1: Ella no está, pero ves su pañuelo. Sigue oliendo a pantano. Sonríes.
+si eleccion == 2: El trono está vacío. El rey Harold no está por ningún lado.
+si eleccion == 3: Mucha gente. Muchas máscaras. Ninguna es Fiona.
+
+mostrar gato derecha
+gato: ¡Señor! ¡La princesa está con el príncipe, junto a la fuente de chocolate!
+? ¿Qué haces?
+* Correr hacia la fuente | valor += 1
+* Acercarte despacio para no asustarla | amor += 1
+* Pedirle a Gato que vigile al hada | sospecha += 1, gato += 1
+si eleccion == 1: Atropellas a tres mimos y una fuente de ponche.
+si eleccion == 2: Te abres paso entre la gente con cuidado. Ya la ves.
+si eleccion == 3: gato: Será un honor. La vigilaré como el halcón que llevo dentro.
+
+ocultar gato
+mostrar fiona derecha
+mostrar encantador centro
+Ahí está Fiona. Y junto a ella, el Príncipe Encantador, con su sonrisa de anuncio.
+encantador: Fiona, querida, ¿no es esta la noche más perfecta? Como en un cuento.
+si pocion == 1: Fiona mira al príncipe confundida. Cree que es Shrek, pero algo no le cuadra.
+si pocion != 1: Fiona se ve incómoda. El príncipe no deja de acomodarse el cabello.
+? ¿Cómo te acercas?
+* Interrumpir: "¡Fiona!" | valor += 1
+* Esperar a que ella te vea | amor += 1
+* Tocarle el hombro al príncipe | gruñon += 1
+si eleccion == 1: Toda la gente voltea. Fiona también.
+si eleccion == 2: Fiona te mira. Por un segundo, sus ojos te reconocen.
+si eleccion == 3: encantador: ¿Disculpa? Estoy en medio de un momento romántico.
+
+encantador: ¿Y tú quién eres? Fuera de aquí, esto es un evento real.
+? ¿Qué le respondes al príncipe?
+* "Soy el que ella eligió." | valor += 1, amor += 1
+* "¿Y tú quién te crees?" | gruñon += 1
+* Ignorarlo y hablarle solo a Fiona | amor += 1
+si eleccion == 1: encantador: Ja. Eso ya lo veremos.
+si eleccion == 2: encantador: El hombre más guapo del reino. Obviamente.
+si eleccion == 3: fiona: ...¿Shrek?
+
+mostrar hada izquierda
+ocultar encantador
+hada: ¡Guardias! ¡El prisionero se escapó!
+? Los guardias corren hacia ti. ¿Qué haces?
+* Pelear | valor += 1
+* Esquivarlos y seguir hacia Fiona | amor += 1
+* Llamar a tus amigos | amistad += 1, cuentos += 1
+si eleccion == 1: Tumbas a cuatro guardias. Pero llegan más.
+si eleccion == 2: Bailas entre los guardias como no sabías que podías bailar.
+si eleccion == 3: Las puertas se abren y entran Pinocho, el Lobo, los cerditos y Burro, gritando.
+
+[batalla_baile]
+fondo baile
+si amistad >= 14: burro: ¡Nadie toca a mi mejor amigo!
+si cuentos >= 12: Pinocho y los cerditos derriban guardias con una mesa de banquete.
+si dragona >= 4: Una sombra cubre los ventanales. ¡La Dragona entra rugiendo!
+? El salón es un caos. ¿Qué haces?
+* Proteger a Fiona | amor += 1
+* Ir directo por el hada | sospecha += 1, valor += 1
+* Ayudar a tus amigos | amistad += 1, cuentos += 1
+si eleccion == 1: Te pones frente a Fiona. Ningún guardia se atreve a pasar.
+si eleccion == 2: El hada levanta su varita. Te mira con odio puro.
+si eleccion == 3: Lanzas a dos guardias hacia el ponche. Los cerditos te aplauden.
+
+? Un guardia se lanza contra Burro.
+* Detenerlo | amistad += 1
+* Confiar en que Burro se defiende
+si eleccion == 1: Lo detienes justo a tiempo. burro: ¡Gracias, Shrek!
+si eleccion == 2: Burro le da una patada con las patas de atrás. burro: ¡Practiqué!
+
+? El Gato está rodeado de cinco guardias.
+* Lanzarle tu cinturón como liana | gato += 1
+* Gritarle que salte | gato += 1
+* Confiar en él
+si eleccion == 3: gato: Cinco contra uno. Me ofenden. Deberían ser veinte.
+
+si pocion == 1 -> baile_medianoche
+ir baile_te
+
+# ----------------------------------- con poción: carrera contra la medianoche
+[baile_medianoche]
+mostrar encantador centro
+El reloj del palacio marca las once y cincuenta. El príncipe toma a Fiona de las manos.
+encantador: Un beso antes de la medianoche, querida. Y seremos felices para siempre.
+? ¡Faltan diez minutos! ¿Qué haces?
+* Gritarle a Fiona la verdad | valor += 1
+* Lanzarte hacia ellos | valor += 1
+* Recordarle algo que solo Shrek sabría | amor += 2
+si eleccion == 1: shrek: ¡Fiona! ¡Ese no soy yo! ¡Yo soy Shrek!
+si eleccion == 2: Tres guardias te detienen a medio salto.
+si eleccion == 3: shrek: ¡Fiona! ¡Eructaste en la pradera y te ganaste mi corazón!
+si eleccion == 3: fiona: ...Solo Shrek sabría eso.
+si amor >= 30 -> baile_rescatado
+si amor >= 24 and valor >= 14 -> baile_rescatado
+si gato >= 6: gato: ¡Ahora, señor! Gato corta la capa del príncipe y él tropieza.
+si gato >= 6 -> baile_rescatado
+Fiona duda. El príncipe la besa antes de que puedas alcanzarla.
+ir equivocado_baile
+
+[baile_rescatado]
+Fiona empuja al príncipe y corre hacia ti.
+fiona: ¡Shrek! Te reconocí por cómo me miras. Ninguna poción cambia eso.
+ir hada_ataca
+
+# ----------------------------------- sin poción: la taza de té
+[baile_te]
+mostrar harold centro
+El rey Harold se acerca a Fiona con una taza de té. Las manos le tiemblan.
+harold: Hija... toma esto. Te sentirás mejor.
+si sospecha >= 6: Recuerdas lo que escuchaste en el jardín. ¡Esa taza tiene una poción de amor!
+? ¿Qué haces?
+* Tirar la taza de un manotazo | valor += 1
+* Gritarle al rey que no lo haga | suegro += 1
+* No haces nada
+si eleccion == 1: La taza vuela y se rompe en mil pedazos. El rey te mira, sorprendido... y aliviado.
+si eleccion == 2: harold: Yo... no puedo. Lo siento, Fiona. No puedo hacerte esto.
+si eleccion == 1: ir hada_ataca
+si eleccion == 2: $ suegro += 2
+si eleccion == 2: ir hada_ataca
+si suegro >= 4: harold: No. No lo haré. El rey deja la taza en la mesa.
+si suegro >= 4: $ suegro += 2
+si suegro >= 4 -> hada_ataca
+Fiona se toma el té. Mira al príncipe. Sus ojos brillan de una forma extraña.
+ir equivocado_baile
+
+[equivocado_baile]
+fondo baile
+ocultar todos
+mostrar fiona derecha
+mostrar encantador centro
+El príncipe y Fiona bailan el último vals. Ella sonríe, pero algo en su mirada está apagado.
+Tú miras desde la puerta, entre los guardias que te sacan del palacio.
+final equivocado "El beso equivocado" "Llegaste tarde. Esta vez, el cuento le ganó al ogro."
+
+# ----------------------------------- el hada ataca
+[hada_ataca]
+fondo baile
+ocultar todos
+mostrar hada centro
+mostrar shrek izquierda
+mostrar fiona derecha
+hada: ¡Basta! Si nadie quiere seguir las reglas de los cuentos, ¡las haré cumplir yo!
+Levanta su varita. Un rayo de luz va directo hacia ti.
+? ¿Qué haces?
+* Proteger a Fiona con tu cuerpo | amor += 2, valor += 1
+* Esquivar | valor += 1
+* Lanzarle un plato al hada
+si eleccion == 1: Cierras los ojos esperando el golpe...
+si eleccion == 2: El rayo pasa rozando tu oreja. El hada carga otro.
+si eleccion == 3: El plato le pega en la varita. El rayo sale torcido.
+
+si suegro >= 5 -> harold_salva
+si dragona >= 5 -> dragona_salva
+si gato >= 7 -> gato_salva
+El rayo rebota en una armadura y le pega al hada. Ella desaparece en una nube de burbujas.
+ir despues_baile
+
+[harold_salva]
+mostrar harold centro
+ocultar hada
+El rey Harold se interpone. El rayo le pega a él... y lo convierte en una rana.
+harold: Croac. Bueno... me lo merecía. Hace años el hada me ayudó a ser rey. Yo también era una rana entonces.
+? El rey ahora es una rana. ¿Qué haces?
+* Levantarlo con cuidado | suegro += 2
+* "Gracias, majestad." | suegro += 1
+* No sabes qué decir
+si eleccion == 1: harold: Gracias, hijo. Qué manos tan suaves para un ogro.
+si eleccion == 2: harold: Llámame Harold. Ahora soy un anfibio; no hacen falta títulos.
+$ harold_rana = verdadero
+El rayo rebotó en la corona del rey y regresó al hada. Ella desaparece en burbujas.
+ir despues_baile
+
+[dragona_salva]
+ocultar hada
+La Dragona se pone entre ustedes y el rayo. La magia rebota en sus escamas y le da de lleno al hada.
+? ¿Qué le dices a la Dragona?
+* "¡Te debo la vida!" | dragona += 1
+* Le das un abrazo enorme | dragona += 2
+si eleccion == 2: dragona: Grrr... ♥ burro: ¡Oye, sin abrazos a mi novia! ...Bueno, solo uno.
+ir despues_baile
+
+[gato_salva]
+ocultar hada
+gato: ¡En guardia, madrina! El Gato salta y corta la varita en dos con su espada.
+La magia explota y el hada desaparece en una nube de burbujas.
+? ¿Qué le dices al Gato?
+* "Eres el mejor espadachín del reino." | gato += 1
+* "Me salvaste. Gracias."
+si eleccion == 1: gato: Lo sé. Pero gracias por notarlo.
+ir despues_baile
+
+[despues_baile]
+fondo baile
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+El salón queda en silencio. Todos los invitados los miran a ustedes dos.
+? ¿Qué le dices a Fiona?
+* "Perdón por todo esto." | amor += 1
+* "Te amo." | amor += 2
+* "¿Estás bien?" | amor += 1
+si eleccion == 1: fiona: No te disculpes. Viniste por mí. Otra vez.
+si eleccion == 2: fiona: Yo también. Así, como eres.
+si eleccion == 3: fiona: Ahora sí.
+ir capitulo14

@@ -1,0 +1,96 @@
+# =====================================================================
+#  CAPÍTULO 10½ — El puente de los acertijos (aventura original)
+# =====================================================================
+
+[acertijos]
+fondo bosque
+ocultar todos
+mostrar shrek izquierda
+mostrar gato derecha
+Camino a la fábrica, un río ancho les cierra el paso. Solo hay un puente, y sobre él, una esfinge pequeña con lentes.
+esfinge: Nadie cruza sin responder mis acertijos. Son las reglas. Yo no las hice. Bueno, sí las hice.
+? ¿Qué haces?
+* Aceptar el reto | valor += 1
+* Intentar cruzar a la fuerza | gruñon += 1
+* Buscar otro camino
+si eleccion == 2: La esfinge te mira por encima de los lentes. esfinge: Eso nunca funciona. Siéntate.
+si eleccion == 3: Río arriba, el agua corre más rápido. Río abajo hay cocodrilos. Vuelves al puente.
+
+esfinge: Primer acertijo. Tengo agujas pero no coso, tengo números pero no cuento. ¿Qué soy?
+? ¿Qué respondes?
+* "Un reloj." | valor += 1
+* "Un erizo con calculadora."
+* "Una costurera aburrida."
+si eleccion == 1: esfinge: Correcto. Qué rápido.
+si eleccion == 2: esfinge: Imaginativo, pero no. Era un reloj.
+si eleccion == 3: esfinge: Poético, pero no. Era un reloj. Igual te doy medio punto por bonito.
+
+esfinge: Segundo acertijo. Mientras más grande soy, menos ves. ¿Qué soy?
+? ¿Qué respondes?
+* "La oscuridad." | valor += 1
+* "Un sombrero muy grande." | gato += 1
+* "El miedo."
+si eleccion == 1: esfinge: Correcto.
+si eleccion == 2: gato: ¡Eso es cierto en mi caso! esfinge: Ingenioso. Pero era la oscuridad.
+si eleccion == 3: esfinge: Hmm. No era la respuesta, pero tampoco está mal. La acepto.
+si eleccion == 3: $ valor += 1
+
+mostrar burro centro
+burro: ¡Yo quiero uno! ¡Dame uno a mí!
+? ¿Dejas que Burro responda el siguiente?
+* Sí | amistad += 1
+* No, esto es serio
+si eleccion == 1: esfinge: ¿Qué se rompe cuando lo dices? burro: ¡Un plato! esfinge: El silencio. burro: Ah. Eso yo lo rompo mucho.
+si eleccion == 2: burro: Bueno... pero me quedo cerca por si necesitas un genio.
+
+esfinge: Tercer acertijo. ¿Qué es lo que todos quieren cambiar de sí mismos, pero lo que más quieren de los demás?
+? ¿Qué respondes?
+* "Su apariencia."
+* "Su forma de ser."
+* "Nada. Que te quieran como eres." | amor += 1, valor += 1
+si eleccion == 1: esfinge: Triste, pero cierto. Lo acepto.
+si eleccion == 2: esfinge: Interesante. No es lo que esperaba, pero lo acepto.
+si eleccion == 3: esfinge: Esa no es la respuesta del acertijo. Es una respuesta mejor. Pasa.
+
+esfinge: Bien. Pueden cruzar. Pero antes, ¿me dejan hacerles una pregunta personal?
+? ¿Aceptas?
+* Sí
+* No | gruñon += 1
+si eleccion == 1: esfinge: ¿Por qué un ogro va a la fábrica de pociones? shrek: Para saber si tengo que cambiar. esfinge: Ah. Esa es la pregunta más difícil de todas.
+si eleccion == 2: esfinge: Respeto la privacidad. Es muy raro en estos tiempos.
+
+[otro_lado]
+fondo bosque
+Del otro lado del río, un hada pequeñita está atrapada en una telaraña.
+? ¿Qué haces?
+* Liberarla | cuentos += 1
+* Preguntarle si conoce al Hada Madrina | sospecha += 1
+* Seguir caminando
+si eleccion == 1: hadita: ¡Gracias! Te deseo suerte. De la buena, no de la que vende la fábrica.
+si eleccion == 1: $ suerte = 1
+si eleccion == 2: hadita: ¡Todas la conocemos! Antes ayudaba. Ahora solo ayuda a quien le conviene. Ten cuidado.
+si eleccion == 3: El Gato regresa y la libera él solo. gato: Un caballero no deja a nadie atrapado.
+si eleccion == 3: $ gato += 1
+
+? El Gato se detiene a ajustarse las botas. ¿Qué le preguntas?
+* "¿Por qué usas botas?" | gato += 1
+* "¿Tienes familia?" | gato += 1
+* Nada
+si eleccion == 1: gato: Porque un gato descalzo es solo un gato. Con botas, soy una leyenda.
+si eleccion == 2: gato: Tuve un amo, un molinero. Me dejó las botas al morir. Desde entonces el camino es mi casa.
+
+? Burro está cansado. ¿Qué haces?
+* Cargarlo un rato | amistad += 1
+* Descansar todos juntos
+* "Ya casi llegamos, aguanta."
+si eleccion == 1: burro: ¡Igual que en el puente de lava! Me encanta esta tradición.
+si eleccion == 2: Se tiran en el pasto. El Gato duerme en tu panza. Burro en tus pies.
+si eleccion == 3: burro: Lo mismo dijiste hace dos horas.
+
+? Desde la colina se ven las burbujas moradas de la fábrica. ¿Qué piensas?
+* "Ahora o nunca." | valor += 1
+* "¿Y si Fiona no quiere que cambie?" | amor += 1
+* "Que sea lo que tenga que ser."
+si eleccion == 2: gato: Entonces, señor, tal vez la respuesta no está en la fábrica.
+ocultar todos
+ir capitulo11

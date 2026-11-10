@@ -1,0 +1,143 @@
+# =====================================================================
+#  CAPÍTULO 2 — Un burro que no se calla
+# =====================================================================
+
+[capitulo2]
+fondo bosque
+ocultar todos
+mostrar shrek izquierda
+El bosque está tranquilo. Demasiado tranquilo.
+? ¿Por dónde vas?
+* Por el camino principal
+* Por el atajo entre los pantanos | valor += 1
+* Por donde se escuchen menos pájaros
+si eleccion == 1: El camino tiene letreros de Duloc cada diez pasos. Todos dicen "SONRÍE".
+si eleccion == 2: El atajo huele delicioso. Bueno, delicioso para un ogro.
+si eleccion == 3: Terminas caminando en círculo. Al final regresas al camino principal.
+
+De pronto, un burro sale disparado entre los árboles, perseguido por guardias de Duloc.
+mostrar burro derecha
+burro: ¡Ayúdame, grandote! ¡Me quieren vender por hablar! ¿Sabes lo raro que es un burro que habla? ¡Valgo oro!
+? Los guardias se acercan.
+* Rugir para espantar a los guardias | amistad += 1, valor += 1
+* Ignorarlo y seguir caminando | gruñon += 1
+* Ponerte frente a los guardias sin decir nada | valor += 1
+si eleccion == 1: Sueltas un rugido que sacude las hojas. Los guardias desaparecen en dos segundos.
+si eleccion == 2: Pasas de largo. Pero los guardias ven a un ogro y huyen igual.
+si eleccion == 3: Te cruzas de brazos. Los guardias calculan tu tamaño y deciden que no les pagan lo suficiente.
+
+burro: ¡Eso fue INCREÍBLE! ¡Me salvaste! ¿Cómo te llamas? Yo soy Burro. Bueno, así me dicen. Es descriptivo.
+? ¿Le dices tu nombre?
+* "Shrek." | amistad += 1
+* "No te importa." | gruñon += 1
+* "Ogro. Así me dicen. Es descriptivo."
+si eleccion == 1: burro: ¡Shrek! Suena fuerte. Suena a alguien que rescata burros.
+si eleccion == 2: burro: Bueno, Señor No-Te-Importa, ¡un placer!
+si eleccion == 3: burro: ¡Ja! Me robaste el chiste. Me caes bien.
+
+burro: ¿A dónde vas? ¿Puedo ir? Seguro puedo ir. Los amigos van juntos a todos lados.
+? Burro ya está caminando a tu lado.
+* "No somos amigos." | gruñon += 1
+* "Puedes venir si no hablas." | amistad += 1
+* Encogerte de hombros
+si eleccion == 1: burro: Todavía. No somos amigos TODAVÍA.
+si eleccion == 2: burro: ¡Trato! ... ... ... ¿Ya puedo hablar?
+si eleccion == 3: burro: ¡Eso es un sí en idioma ogro! Lo aprendí ahorita.
+
+[camino_burro]
+fondo bosque
+burro: Oye, ¿y por qué vas a Duloc? ¿Turismo? ¿Comida? ¿Tienes novia allá?
+? ¿Qué le cuentas?
+* La verdad: te invadieron el pantano | amistad += 1
+* "Asuntos de ogro."
+* "Voy a comerme a Lord Farquaad." | gruñon += 1
+si eleccion == 1: burro: ¡Qué grosería! Uno no se mete a la casa de un ogro sin avisar. Mínimo un pastel.
+si eleccion == 2: burro: Me encantan los asuntos de ogro. ¿Implican ruidos fuertes?
+si eleccion == 3: burro: ¡Ja, ja! Espera... ¿es broma? Dime que es broma.
+
+burro: ¿Sabes qué? Tú no das tanto miedo. Tienes cara de que te gusta abrazar.
+? Burro te mira con ojos enormes.
+* Rugirle para que aprenda | gruñon += 1
+* "Los ogros no abrazan."
+* Sonreír sin querer | amistad += 1
+si eleccion == 1: burro: ¡Ay! Bueno, retiro lo del abrazo. Pero no lo de la cara.
+si eleccion == 2: burro: Eso es lo que diría alguien que necesita un abrazo.
+si eleccion == 3: burro: ¡Te vi! ¡Sonreíste! ¡Eso no se olvida!
+
+Llega la noche. Encuentras un claro para dormir.
+fondo noche
+? ¿Dónde duermes?
+* Junto a una fogata | amistad += 1
+* Sobre una roca, lejos de Burro | gruñon += 1
+* Bajo un árbol enorme
+si eleccion == 1: La fogata calienta. Burro se acurruca demasiado cerca. Lo permites. Esta vez.
+si eleccion == 2: Desde lejos escuchas a Burro hablando solo. Nunca para.
+si eleccion == 3: El árbol gotea sobre tu cabeza toda la noche. Muy relajante, para ser sinceros.
+
+burro: Shrek, ¿qué crees que son las estrellas?
+? ¿Qué le contestas?
+* Le cuentas una leyenda de ogros sobre las estrellas | amistad += 1
+* "Luces. Duérmete."
+* "Ojos de gigantes que vigilan a los burros habladores." | gruñon += 1
+si eleccion == 1: shrek: Los ogros dicen que cada estrella es un ogro viejo que por fin encontró silencio.
+si eleccion == 1: burro: Eso es triste y bonito al mismo tiempo. Como tú.
+si eleccion == 2: burro: Okey. Buenas noches. ... ¿Shrek? ¿Ya te dormiste?
+si eleccion == 3: Burro no duerme en toda la noche. Tú duermes de maravilla.
+
+burro: Shrek... ¿por qué la gente le tiene miedo a los ogros?
+? La pregunta te toma por sorpresa.
+* Explicarle que la gente juzga sin conocer | amistad += 1
+* "Porque somos aterradores." | gruñon += 1
+* Cambiar de tema
+si eleccion == 1: shrek: La gente ve a un ogro y ya decidió quién eres antes de que hables. Así que mejor no hablar.
+si eleccion == 1: burro: Yo te conozco. Y no me das miedo. Bueno, un poquito, cuando roncas.
+si eleccion == 2: burro: No me das miedo. ¿Ves? Aquí estoy. Temblando un poquito, pero aquí estoy.
+si eleccion == 3: shrek: Mañana llegamos a Duloc. Duérmete.
+
+fondo bosque
+Al amanecer, Burro ya está despierto y cantando desafinado.
+? ¿Cómo lo despiertas a él del todo?
+* Le das la mitad de tu desayuno | amistad += 1
+* Le echas agua del río | gruñon += 1
+* Simplemente empiezas a caminar
+si eleccion == 1: burro: ¿Gusanos? ... Bueno, es el gesto lo que cuenta. Gracias.
+si eleccion == 2: burro: ¡AAAH! ¡Está helada! ...Bueno, sí me despertó.
+si eleccion == 3: burro: ¡Espérame! ¡No se vale irse sin mí!
+
+En el camino encuentran un puente roto sobre un arroyo.
+? ¿Cómo cruzan?
+* Cargas a Burro sobre tus hombros | amistad += 1, valor += 1
+* Saltas tú y que Burro se las arregle | gruñon += 1
+* Buscan otro paso río abajo
+si eleccion == 1: burro: ¡Uy! ¡Desde aquí arriba se ve todo! ¡Soy un burro alto!
+si eleccion == 2: Burro cae al agua. Sale empapado y ofendido, pero sale.
+si eleccion == 3: Tardan una hora más. Burro aprovecha para contarte toda su vida. Toda.
+
+Un vendedor ambulante les ofrece "mapas mágicos" a Duloc.
+? ¿Le compras uno?
+* Sí, por si acaso
+* No, Duloc está ahí enfrente
+* Le das un susto para que deje de estafar | gruñon += 1, cuentos += 1
+si eleccion == 1: El mapa solo tiene una flecha que dice "POR AHÍ". Bueno, técnicamente es correcto.
+si eleccion == 2: Desde la colina ya se ve una torre altísima. Muy alta. Sospechosamente alta.
+si eleccion == 3: El vendedor huye. Dos ratones a los que había engañado te dan las gracias.
+
+burro: Shrek, si te dijera un secreto... ¿prometes no reírte?
+? Burro se ve nervioso.
+* "Lo prometo." | amistad += 1
+* "No prometo nada."
+* "No quiero saber secretos."
+si eleccion == 1: burro: Me da miedo estar solo. Por eso hablo tanto. Para que no se sienta tan vacío.
+si eleccion == 1: No te ríes. Lo entiendes mejor de lo que te gustaría admitir.
+si eleccion == 2: burro: Ya sé que te vas a reír... Mejor otro día.
+si eleccion == 3: burro: Okey. Me lo guardo. Como un tesoro. Un tesoro triste.
+
+fondo duloc
+Frente a ustedes se levanta Duloc: murallas blancas, flores perfectas y un castillo con una torre larguísima.
+burro: Wow. Este lugar está más limpio que un plato recién lamido.
+? ¿Qué te parece Duloc?
+* "Demasiado perfecto. No me gusta."
+* "Seguro aquí odian el lodo." | gruñon += 1
+* "Burro, quédate cerca." | amistad += 1
+si eleccion == 3: burro: ¿Te preocupas por mí? ¡Te preocupas por mí!
+ir capitulo3

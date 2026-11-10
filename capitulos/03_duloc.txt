@@ -1,0 +1,205 @@
+# =====================================================================
+#  CAPÍTULO 3 — Duloc
+# =====================================================================
+
+[capitulo3]
+fondo duloc
+ocultar todos
+mostrar shrek izquierda
+mostrar burro derecha
+En la entrada hay un puesto de información con un muñeco que repite las reglas del reino.
+Todo en Duloc parece tener una fila. Hasta las palomas.
+? ¿Cómo entras?
+* Haciendo fila como todos
+* Saltándote la fila | gruñon += 1
+* Leyendo primero las reglas del muñeco
+si eleccion == 1: La fila avanza lentísimo. Detrás de ti, nadie se atreve a quejarse.
+si eleccion == 2: Nadie protesta. Ser un ogro tiene sus ventajas.
+si eleccion == 3: Regla número 12: "Prohibido el lodo". Regla 13: "Prohibido ser feo". Excelente.
+
+burro: Shrek, la gente nos está mirando raro.
+? Los ciudadanos de Duloc se esconden tras sus ventanas impecables.
+* Saludarlos con la mano | cuentos += 1
+* Hacerles una mueca horrible | gruñon += 1
+* Ignorarlos
+si eleccion == 1: Una niña te devuelve el saludo. Su mamá la jala hacia adentro, escandalizada.
+si eleccion == 2: Una ventana se cierra tan rápido que se rompe.
+si eleccion == 3: burro: Muy bien. Indiferencia. Muy misterioso. Me gusta.
+
+fondo plaza
+En la plaza principal hay un escenario, banderas y cientos de caballeros en armadura.
+Un letrero anuncia: "GRAN TORNEO. EL CAMPEÓN RESCATARÁ A LA PRINCESA."
+burro: ¿Un torneo? ¿Con premios? ¿Hay comida?
+? ¿Qué haces?
+* Acercarte al escenario | valor += 1
+* Observar desde lejos
+* Buscar algo de comer primero
+si eleccion == 3: Encuentras un puesto de pasteles perfectamente cuadrados. Saben a cartón perfumado.
+
+mostrar farquaad centro
+Un hombre muy bajito con una capa muy larga sube al balcón. Es Lord Farquaad.
+farquaad: ¡Valientes caballeros! Uno de ustedes tendrá el honor de rescatar a la princesa Fiona... para mí.
+farquaad: Y si muere en el intento, bueno, el siguiente en la lista lo intentará.
+burro: Qué romántico.
+? ¿Qué piensas de Farquaad?
+* "Es más pequeño de lo que imaginaba."
+* "No me gusta cómo habla de la princesa." | amor += 1
+* "Me da igual. Solo quiero mi pantano."
+si eleccion == 2: Algo en su tono te molesta. Nadie debería ser un premio.
+
+farquaad: Antes de comenzar, consultemos al Espejo Mágico.
+mostrar espejo derecha
+ocultar burro
+espejo: Mi señor, para ser rey debe casarse con una princesa. Le presento tres opciones...
+espejo: Una que duerme sin despertar, otra que vive con siete enanos... y la princesa Fiona, encerrada en una torre custodiada por un dragón.
+espejo: Ah, y un pequeño detalle sobre ella de noche que...
+farquaad: ¡Fiona! Elijo a Fiona. Silencio, espejo.
+? El espejo parecía querer decir algo importante.
+* Prestar atención al espejo | sospecha_espejo = verdadero
+* Distraerte mirando a la multitud
+si eleccion == 1: El espejo te mira por un instante, como si quisiera advertirte algo. Luego se apaga.
+si eleccion == 2: Un caballero se tropieza con su propia lanza. Nadie se ríe. En Duloc reír está regulado.
+ocultar espejo
+mostrar burro derecha
+
+farquaad: ¡Que empiece el torneo! ...Un momento. ¿Qué es ESO? ¿Un ogro?
+Todos los caballeros se voltean hacia ti.
+farquaad: ¡Caballeros, nuevo plan! ¡Quien mate al ogro será el campeón!
+? Cien caballeros te rodean.
+* Pelear | valor += 1, fama += 1
+* Intentar explicar que solo vienes a hablar | cuentos += 1
+* Correr
+si eleccion == 2: shrek: ¡Esperen! Solo vengo a... Una lanza pasa rozando tu oreja. Bueno, hablar no funcionó.
+si eleccion == 3: Corres tres pasos y te topas con una pared de escudos. Toca pelear.
+
+[torneo]
+fondo plaza
+Los caballeros atacan.
+? El primero viene a caballo con su lanza.
+* Esquivarlo y empujarlo | valor += 1
+* Agarrar la lanza y lanzarlo lejos | fama += 1
+* Rugirle al caballo | gruñon += 1
+si eleccion == 1: El caballero sigue de largo y acaba dentro de un puesto de pasteles cuadrados.
+si eleccion == 2: El caballero vuela sobre la multitud. La multitud hace "oooh".
+si eleccion == 3: El caballo se espanta y se lleva a su jinete de regreso a casa.
+
+? Tres caballeros te rodean con espadas.
+* Usar un barril como escudo
+* Hacer que choquen entre ellos | fama += 1
+* Pedirle ayuda a Burro | amistad += 1
+si eleccion == 1: El barril estaba lleno de cerveza. Ahora los caballeros están mojados y confundidos.
+si eleccion == 2: Te agachas en el momento justo. Clang, clang, clang. Tres cascos abollados.
+si eleccion == 3: burro: ¿YO? ¡Está bien! Burro patea a uno con las patas traseras. burro: ¡Siempre quise hacer eso!
+
+? El público empieza a animarte. ¿Cómo respondes?
+* Saludar al público | fama += 1
+* Ignorarlo y seguir peleando
+* Lanzar un caballero hacia los gritones | gruñon += 1
+si eleccion == 1: La multitud grita tu nombre. Bueno, grita "¡OGRO!", pero con cariño.
+si eleccion == 3: El público se ríe aún más. Los dulocianos necesitaban esto.
+
+? El último caballero es enorme y lleva un mazo.
+* Enfrentarlo de frente | valor += 1
+* Usar la escalera del escenario como trampa
+* Dejar que Burro lo distraiga | amistad += 1
+si eleccion == 1: Chocan como dos rocas. Él se cae. Tú no. Fin de la discusión.
+si eleccion == 2: El caballero sube, la escalera se dobla, y él aterriza sentado sobre su mazo.
+si eleccion == 3: burro: ¡Oye, grandote! ¡Tu armadura está desabrochada! El caballero mira abajo. Tú haces el resto.
+
+Cuando el polvo se asienta, todos los caballeros están en el suelo. Y tú sigues de pie.
+farquaad: Hmm. Cambio de planes. Ogro, ¡felicidades! Eres el campeón.
+shrek: ¿Campeón de qué?
+farquaad: Irás a rescatar a la princesa Fiona por mí.
+? ¿Qué le respondes?
+* "¿Y yo qué gano?"
+* "¿Por qué no vas tú?" | gruñon += 1
+* "Solo vine por mi pantano."
+si eleccion == 2: farquaad: Porque yo soy el rey. Bueno, casi. Y los reyes delegan.
+farquaad: Te propongo un trato: tráeme a la princesa y yo saco a todas esas criaturas de tu pantano.
+? ¿Quieres negociar algo más?
+* Pedir las escrituras del pantano por escrito | fama += 1
+* Pedir que liberen a las criaturas en otro lugar | cuentos += 2
+* No pedir nada más
+si eleccion == 1: farquaad: Bien. Escrituras con sello real. Qué ogro tan burocrático.
+si eleccion == 2: farquaad: ¿Te importan esas criaturas? Qué raro. Está bien, les daré un bosque lejos de aquí.
+? Farquaad extiende su mano pequeñita para cerrar el trato.
+* Aceptar el trato -> trato_aceptado
+* "Mejor saco a las criaturas yo mismo y tú te quedas sin novia." -> calabozo | valor += 1
+
+[calabozo]
+fondo calabozo
+ocultar todos
+mostrar farquaad centro
+farquaad: ¡Guardias! Todos. Absolutamente todos los guardias.
+Puedes con diez. Con veinte. Con cincuenta... no tanto.
+ocultar farquaad
+Despiertas en un calabozo de Duloc.
+? Estás encadenado. ¿Qué haces?
+* Intentar romper las cadenas | valor += 1
+* Gritar pidiendo ayuda
+* Esperar
+si eleccion == 1: Las cadenas son de acero del bueno. Lo único que se rompe es tu paciencia.
+si eleccion == 2: Solo responde el eco. Y un guardia que te dice que te calles.
+si eleccion == 3: Pasan horas. Días. Escuchas que Farquaad mandó a otro caballero por Fiona.
+si amistad >= 4 -> calabozo_burro
+final calabozo "Ogro tras las rejas" "A veces un trato es mejor que una pelea."
+
+[calabozo_burro]
+mostrar burro centro
+burro: ¡Pssst! ¡Shrek! Encontré las llaves. Bueno, me las encontré a mí mismo enredado en ellas.
+? Burro te ofrece la llave.
+* Escapar ahora mismo -> escape_calabozo | amistad += 1
+* Pedirle que se vaya, es peligroso para él
+si eleccion == 2: burro: ¿Y dejarte aquí? Ni loco. Los amigos no se dejan en calabozos.
+burro: Además ya abrí la puerta. Así que...
+ir escape_calabozo
+
+[escape_calabozo]
+fondo noche
+Escapan juntos por las murallas. Afuera, la noche está fresca.
+burro: ¿Y ahora? ¿Vamos por la princesa nosotros solos?
+? ¿Qué haces?
+* "Vamos por la princesa. Así Farquaad tendrá que cumplir." -> trato_aceptado | valor += 1
+* "Volvemos al pantano. Me rindo." -> pantano_compartido
+
+[trato_aceptado]
+fondo plaza
+ocultar todos
+mostrar shrek izquierda
+mostrar burro derecha
+farquaad: Excelente. Tienes hasta la luna llena. Y ogro... no la asustes demasiado.
+burro: ¿Vamos a rescatar a una princesa? ¡Siempre quise ser parte de un rescate!
+? ¿Le dices a Burro que venga?
+* "Vienes conmigo." | amistad += 2
+* "No. Esto es peligroso."
+* "Vas a venir de todos modos, ¿verdad?" | amistad += 1
+si eleccion == 1: burro: ¡¿En serio?! ¡Equipo Ogro-Burro! Ya pensaré un mejor nombre.
+si eleccion == 2: burro: Peligroso es mi segundo nombre. Bueno, el segundo es "Cállate", pero el tercero es Peligroso.
+si eleccion == 3: burro: Me conoces tan bien...
+
+fondo duloc
+Antes de salir de Duloc, pasan por el mercado de la ciudad.
+? ¿Qué compras para el viaje?
+* Una cuerda larga | valor += 1
+* Un mapa del castillo del dragón
+* Dulces para Burro | amistad += 1
+si eleccion == 1: Una cuerda nunca sobra. Sobre todo cerca de lava.
+si eleccion == 2: El vendedor dice que es original. Tiene una mancha de café con forma de dragón.
+si eleccion == 3: burro: ¡Dulces! ¡Eres el mejor ogro del mundo! Y eso que conozco a varios. Bueno, solo a ti.
+
+? Un niño de Duloc se acerca y te pregunta si de verdad eres malo.
+* "Solo con los que se lo merecen." | cuentos += 1
+* "Muy malo. Buuu." | gruñon += 1
+* "¿Tú qué crees?" | cuentos += 1
+si eleccion == 1: niño: ¿Y Lord Farquaad se lo merece? shrek: Eso lo veremos.
+si eleccion == 2: El niño se ríe. No le diste nada de miedo.
+si eleccion == 3: niño: Creo que no. Malo no rescata princesas. Y se va corriendo.
+
+? A la salida, un guardia les cobra "impuesto de ogro". ¿Qué haces?
+* Pagarlo para no causar problemas
+* Recordarle que acabas de vencer a cien caballeros | fama += 1
+* Pasar de largo | gruñon += 1
+si eleccion == 2: guardia: ¿Impuesto? ¿Cuál impuesto? Yo no dije nada. Buen viaje.
+si eleccion == 3: El guardia decide que el impuesto puede esperar. Para siempre.
+ir capitulo4
+

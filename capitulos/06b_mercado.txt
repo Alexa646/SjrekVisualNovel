@@ -1,0 +1,100 @@
+# =====================================================================
+#  CAPÍTULO 6½ — El mercado de los trolls (aventura original)
+# =====================================================================
+
+[mercado]
+fondo plaza
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+A media tarde llegan a un mercado bajo un puente de piedra. Lo atienden trolls de todos los tamaños.
+? ¿Entran al mercado?
+* Sí, a ver qué venden
+* Solo un ratito, que se hace tarde | amor += 1
+si eleccion == 2: fiona: Gracias por fijarte en la hora. Sonríe, un poco nerviosa.
+
+? Un troll vende sopas extrañas. ¿Cuál pruebas?
+* Sopa de piedras con musgo
+* Caldo de niebla | valor += 1
+* Ninguna
+si eleccion == 1: Crujiente. Mineral. Un poco arenosa. Cinco estrellas.
+si eleccion == 2: Sabe a nada, pero te hace estornudar nubes pequeñitas. Fiona se ríe.
+
+? Un troll pequeño te reta a adivinar debajo de qué concha está la canica.
+* Jugar | valor += 1
+* Dejar que Fiona juegue | amor += 1
+* No jugar: es trampa seguro
+si eleccion == 1: Pierdes tres veces. A la cuarta, le levantas la manga: tenía la canica ahí.
+si eleccion == 2: Fiona gana cinco veces seguidas. El troll cierra el puesto, ofendido.
+si eleccion == 3: Tenías razón. Un troll grande pasa y le confisca las conchas.
+
+mostrar burro centro
+burro: ¡Shrek! ¡Venden sombreros! ¿Me compras uno? Por fa, por fa, por fa.
+? ¿Qué sombrero le compras a Burro?
+* Uno con plumas | amistad += 1
+* Uno de pirata | amistad += 1
+* Ninguno: los burros no usan sombrero
+si eleccion == 1: burro: ¡Me veo elegantísimo! ¡Soy un burro de la realeza!
+si eleccion == 2: burro: ¡Arrr! ...No sé qué más dicen los piratas. ¡Arrr otra vez!
+si eleccion == 3: burro: Eso es discriminación de sombreros.
+
+? Ves un puesto de flores raras. ¿Le compras algo a Fiona?
+* Una flor que brilla de noche | amor += 2
+* Un cactus que canta (desafinado)
+* Nada, no es momento
+si eleccion == 1: fiona: Es preciosa. Brilla como... bueno, como algo que se esconde de día.
+si eleccion == 2: El cactus canta todo el camino. Burro le hace segunda voz. Es una pesadilla.
+si eleccion == 3: Fiona mira la flor un segundo más de lo normal.
+
+De pronto, un troll gigante grita: "¡Un ladrón! ¡Me robaron mi bolsa de oro!"
+Todos voltean a verte. Eres el único ogro del mercado.
+? ¿Qué haces?
+* Decir que no fuiste tú, con calma | cuentos += 1
+* Ayudar a buscar al ladrón | valor += 1, fama += 1
+* Irte rápido antes de que te culpen | gruñon += 1
+si eleccion == 1: troll: Eso diría un ladrón. Pero también un inocente. Hmm.
+si eleccion == 2: Sigues unas huellas pequeñitas hasta un barril.
+si eleccion == 3: Te detienen dos trolls. Huir te hace ver más culpable.
+
+? Dentro del barril hay una niña goblin abrazando la bolsa de oro. Está asustada.
+* Entregarla a los trolls
+* Preguntarle por qué lo hizo | cuentos += 1
+* Esconderla y devolver la bolsa tú | cuentos += 2, amor += 1
+si eleccion == 1: Los trolls se la llevan. Fiona te mira, decepcionada.
+si eleccion == 2: niña: Mi abuela está enferma. Necesitábamos medicina.
+si eleccion == 3: Devuelves la bolsa. El troll está tan feliz que no pregunta. La niña te guiña un ojo.
+
+? ¿Haces algo más por la niña?
+* Le das tus monedas para la medicina | cuentos += 1, amor += 1
+* Le enseñas a pedir ayuda en vez de robar
+* Nada más
+si eleccion == 1: La niña se va corriendo. Fiona te toma del brazo sin decir nada.
+si eleccion == 2: niña: ¿Ayuda? Nadie ayuda a los goblins. shrek: Ni a los ogros. Por eso hay que ayudarnos entre nosotros.
+
+? Un troll viejo te ofrece leer tu futuro en un charco.
+* Aceptar
+* "No creo en eso."
+si eleccion == 1: troll: Veo... dos caminos. En uno estás solo. En el otro, no. Tú eliges cuál.
+si eleccion == 2: troll: Igual te lo digo gratis: no seas terco con lo que sientes.
+
+? ¿Qué le compras para el camino a Burro, a Fiona y a ti?
+* Pan de raíces para todos | amistad += 1
+* Dulces de lodo
+* Nada, ya gastaste mucho
+si eleccion == 1: burro: ¡Pan! ¡Con forma de... raíz! Delicioso. Creo.
+
+? Al salir, la niña goblin te alcanza con un regalo: una piedra con un hoyo en el medio.
+* Aceptarla | cuentos += 1
+* Decirle que se la quede
+si eleccion == 1: niña: Si miras a través de ella, ves a la gente como es de verdad.
+si eleccion == 1: $ piedra = verdadero
+si eleccion == 2: niña: ¡No! Es para ti. Te la deja en la mano y se va corriendo.
+si eleccion == 2: $ piedra = verdadero
+
+? ¿Miras a Fiona a través de la piedra?
+* Sí | sospecha_fiona = verdadero
+* No, sería de mala educación | amor += 1
+si eleccion == 1: Por un instante ves a Fiona... verde. Con orejas como las tuyas. Parpadeas y ya no.
+si eleccion == 2: Guardas la piedra. Prefieres que Fiona te cuente las cosas ella misma.
+ocultar todos
+ir fogata

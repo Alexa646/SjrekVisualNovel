@@ -1,0 +1,208 @@
+# =====================================================================
+#  CAPÍTULO 12 — Tras las rejas reales
+# =====================================================================
+
+[capitulo12]
+ocultar todos
+si pocion == 1 -> palacio_humano
+ir palacio_ogro
+
+# ----------------------------------------------- camino con la poción
+[palacio_humano]
+fondo palacio
+mostrar shrek izquierda
+Llegas al palacio con tu nueva cara. Los guardias te hacen reverencias. Nadie te había hecho reverencias.
+? ¿Cómo respondes a las reverencias?
+* Las devuelves, incómodo | cuentos += 1
+* Disfrutas el momento | fama += 1
+* Pasas rápido, buscando a Fiona
+si eleccion == 1: Un guardia confundido te hace otra reverencia. Ustedes dos podrían seguir así todo el día.
+si eleccion == 2: Por un segundo, entiendes por qué los príncipes son tan creídos.
+
+Pero en la puerta del palacio, el Hada Madrina te cierra el paso.
+mostrar hada centro
+hada: Vaya, vaya. Funcionó la poción, ¿eh? Lástima que Fiona ya tiene con quién estar.
+Detrás de ella ves al Príncipe Encantador hablando con Fiona... haciéndose pasar por ti.
+? ¿Qué haces?
+* Gritar el nombre de Fiona | valor += 1
+* Enfrentar al hada | sospecha += 1
+* Retroceder a pensar un plan | gato += 1
+si eleccion == 1: Fiona no te escucha. La música del palacio está demasiado fuerte.
+si eleccion == 2: hada: Mira, querido: ella lo mira y cree que eres tú. ¿No es eso lo que querías? Que te viera "bonito".
+si eleccion == 3: gato: Sabia decisión. Un caballero sabe cuándo retirarse... por un momento.
+
+hada: Si de verdad la quieres, déjala ir. Ella merece un príncipe de verdad.
+? Esas palabras te duelen. ¿Qué haces?
+* Irte, derrotado -> derrota_humano
+* Negarte: "Ella merece elegir." | valor += 1, amor += 1
+* Llamar a Burro y Gato | amistad += 1, gato += 1
+si eleccion == 2: hada: Qué terco. ¡Guardias! Este hombre robó una poción de mi fábrica.
+si eleccion == 3: burro: ¡Aquí estamos! Y justo detrás llegan los guardias.
+ir arresto
+
+[derrota_humano]
+fondo noche
+Te alejas del palacio. Gato y Burro te siguen en silencio.
+mostrar burro derecha
+burro: Shrek, ¿en serio te vas a rendir? ¿Después de todo?
+? ¿Qué decides?
+* "Tienes razón. Vamos a pelear." -> arresto | amistad += 1, valor += 1
+* "Ella estará mejor sin mí." -> derrota_final
+
+[derrota_final]
+Te sientas en una colina. La medianoche llega y pasa. Vuelves a ser ogro. Ella también, en algún lugar del palacio.
+Nunca sabes qué fue de ella. A veces, eso es peor que cualquier final.
+final equivocado "El beso equivocado" "Te rendiste justo cuando ella más te necesitaba."
+
+# ----------------------------------------------- camino sin la poción
+[palacio_ogro]
+fondo palacio
+mostrar shrek izquierda
+mostrar fiona derecha
+si tiene_pocion: Le muestras a Fiona la poción que robaste.
+si tiene_pocion: fiona: ¿Ibas a cambiar por mí? Shrek... yo me enamoré de ti así.
+si tiene_pocion: $ amor += 2
+? Fiona y tú hablan sobre su papá y el hada. ¿Qué propones?
+* Hablar directamente con el rey | suegro += 1
+* Desenmascarar al hada en el baile | sospecha += 1
+* Irse del reino esa misma noche
+si eleccion == 1: fiona: Vamos juntos. Es mi papá; me va a escuchar.
+si eleccion == 2: fiona: El baile es mañana. Todo el reino va a estar ahí.
+si eleccion == 3: fiona: No. Ya huí una vez de mi familia. No lo haré otra vez.
+
+mostrar harold centro
+harold: Fiona, hija... ¿podemos hablar? A solas.
+? ¿Te vas o te quedas?
+* Te quedas al lado de Fiona | valor += 1, amor += 1
+* Les das espacio | suegro += 1
+si eleccion == 1: harold: Bien. Que se quede. De todos modos tiene que escuchar esto.
+si eleccion == 2: Sales. Desde afuera escuchas al rey llorar un poquito. Tal vez no es tan malo.
+si eleccion == 2: $ suegro += 1
+
+Pero antes de que el rey diga nada, entran los guardias con el Hada Madrina.
+mostrar hada izquierda
+hada: ¡Arresten al ogro! Robó una poción de mi fábrica e intentó atacar al rey.
+? ¿Qué haces?
+* Defenderte con palabras | cuentos += 1
+* Resistirte | valor += 1, gruñon += 1
+* Mirar al rey esperando que te defienda | suegro += 1
+si eleccion == 1: Nadie escucha a un ogro. Nunca lo han hecho.
+si eleccion == 2: Tumbas a seis guardias, pero son demasiados.
+si eleccion == 3: harold: Yo... El rey baja la mirada. No dice nada. Por ahora.
+ir arresto
+
+# ----------------------------------------------- calabozo real
+[arresto]
+fondo calabozo
+ocultar todos
+mostrar shrek centro
+Te encierran en el calabozo más profundo del palacio. Burro y Gato están en la celda de al lado.
+? ¿Qué es lo primero que haces?
+* Revisar las paredes | valor += 1
+* Hablar con Burro y Gato | amistad += 1, gato += 1
+* Gritar el nombre de Fiona
+si eleccion == 1: Las paredes son de piedra gruesa. Esta vez no hay atajos.
+si eleccion == 2: burro: Shrek, ¿estás bien? gato: Esto, señor, es lo que llamamos "un contratiempo".
+si eleccion == 3: El eco responde. Fiona no.
+
+? El guardia de la celda se aburre. ¿Intentas algo?
+* Hacerle plática | cuentos += 1
+* Fingir que estás enfermo
+* Esperar
+si eleccion == 1: Resulta que el guardia odia al Hada Madrina. Te cuenta que el baile empieza a las diez.
+si eleccion == 2: El guardia no cae. guardia: Los ogros no se enferman. Eso dice el manual.
+si eleccion == 3: Pasan las horas. Afuera empieza a sonar música de baile.
+
+mostrar gato derecha
+gato: Señor, escuche. Afuera hay ruido. Alguien viene.
+si cuentos >= 14 -> rescate_cuentos
+si gato >= 6 -> rescate_gato
+si amistad >= 20 -> rescate_burro
+Nadie viene. Solo era el viento.
+? ¿Qué haces mientras tanto?
+* Escribir una carta para Fiona en la pared
+* Intentar doblar los barrotes | valor += 1
+si eleccion == 1: Escribes con lodo: "Te quise como eras". Es lo único que se te ocurre.
+si eleccion == 2: Los barrotes ni se mueven. Fueron hechos para gigantes.
+final prision "Tras las rejas reales" "Nadie vino a rescatarte. Tal vez debiste hacer más amigos en el camino."
+
+[rescate_cuentos]
+mostrar pinocho izquierda
+mostrar lobo derecha
+ocultar gato
+Al otro lado de la reja aparecen Pinocho, el Lobo, los tres cerditos y el Hombre de Jengibre.
+pinocho: ¡Señor ogro! Usted nos defendió de Farquaad. Ahora nos toca a nosotros.
+? ¿Qué les dices?
+* "¿Cómo llegaron hasta aquí?"
+* "Gracias, amigos." | cuentos += 1
+* "Váyanse, es peligroso."
+si eleccion == 1: lobo: Los cerditos cavaron un túnel. Son excelentes constructores.
+si eleccion == 2: El Hombre de Jengibre se seca una lágrima con su mano de galleta.
+si eleccion == 3: jengibre: ¡Ni lo sueñes! ¡Ya nos ensuciamos los zapatos!
+? ¿Cómo abren la celda?
+* El Hombre de Jengibre entra por la cerradura | cuentos += 1
+* El Lobo se disfraza de guardia
+* Los cerditos cavan hacia tu celda
+si eleccion == 1: jengibre: ¡Tengo el tamaño perfecto para esto! Clic. La puerta se abre.
+si eleccion == 2: lobo: ¿Llaves? Gracias, compañero. El guardia nunca nota las orejas peludas.
+si eleccion == 3: El suelo se hunde y caes en un túnel lleno de cerditos con cascos.
+ir libre
+
+[rescate_gato]
+gato: ¡Ajá! Uno nunca encierra a un gato sin revisar sus botas.
+Saca una ganzúa diminuta de su bota.
+? ¿Qué haces?
+* "Gato, eres increíble." | gato += 1
+* "¿Por qué no lo hiciste hace tres horas?"
+si eleccion == 2: gato: El drama, señor. El drama necesita tiempo.
+Clic. Clic. Las dos celdas se abren.
+ir libre
+
+[rescate_burro]
+burro: ¡Shrek! ¡Agárrate! Lo que se escucha es... ¡mi novia!
+La Dragona derrumba la pared del calabozo de un cabezazo.
+? ¿Qué le dices a la Dragona?
+* "Gracias, amiga." | dragona += 1
+* "Llegaste justo a tiempo."
+si eleccion == 1: dragona: Grrr. ♥
+ir libre
+
+[libre]
+fondo noche
+ocultar todos
+mostrar shrek izquierda
+mostrar burro centro
+mostrar gato derecha
+Ya afuera del calabozo, se escucha la música del baile en el palacio.
+si pocion == 1: Faltan dos horas para la medianoche. Si Fiona besa al príncipe falso antes, será para siempre.
+si pocion != 1: El Hada planea darle a Fiona una poción de amor para que se enamore de Encantador.
+? ¿Cuál es el plan?
+* Entrar por la puerta principal, a lo grande | valor += 1, fama += 1
+* Colarse disfrazados | gato += 1
+* Reunir a todos los amigos posibles primero | cuentos += 1, amistad += 1
+si eleccion == 1: burro: ¡A lo grande! ¡Me encanta lo grande!
+si eleccion == 2: gato: Yo me encargo de los disfraces. Tengo un sombrero para cada ocasión.
+si eleccion == 3: Pinocho, el Lobo y los cerditos se unen. jengibre: ¡Nadie se mete con nuestro ogro!
+
+? ¿Qué le pides a Burro?
+* Que vigile la entrada | amistad += 1
+* Que se quede a salvo
+* Que venga contigo hasta el final | amistad += 2
+si eleccion == 2: burro: ¿A salvo? ¿Mientras tú te juegas todo? ¡De ninguna manera!
+si eleccion == 3: burro: ¡Hasta el final! ¡Y más allá del final!
+
+? ¿Y al Gato?
+* Que distraiga a los guardias | gato += 1
+* Que encuentre al rey Harold | suegro += 1
+* Que se encargue del Hada | sospecha += 1
+si eleccion == 1: gato: Distraer es mi especialidad. Después de la esgrima y de la siesta.
+si eleccion == 2: gato: Buscaré al rey. Tal vez su corazón no esté tan perdido.
+si eleccion == 3: gato: ¿Contra una hada con varita? Necesitaré mis botas de la suerte.
+
+? Antes de entrar, ¿qué haces?
+* Respirar hondo | valor += 1
+* Repasar lo que le dirás a Fiona | amor += 1
+* Darle las gracias a todos | amistad += 1, cuentos += 1
+si eleccion == 2: Lo repasas tres veces. Todas suenan mal. Igual lo dirás.
+si eleccion == 3: pinocho: No nos agradezca todavía. ¡Primero hay que ganar!
+ir capitulo13

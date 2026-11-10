@@ -1,0 +1,149 @@
+# =====================================================================
+#  CAPÍTULO 11 — La fábrica de pociones
+# =====================================================================
+
+[capitulo11]
+fondo fabrica
+ocultar todos
+mostrar shrek izquierda
+mostrar gato derecha
+La fábrica del Hada Madrina tiene chimeneas que echan burbujas moradas y un letrero: "FELICIDAD GARANTIZADA".
+? ¿Cómo entran?
+* Por la puerta principal, pidiendo una cita | valor += 1
+* Por la chimenea | gruñon += 1
+* Gato abre una ventana con su espada | gato += 1
+si eleccion == 1: Una secretaria te da un número: el 4,327. Están atendiendo al 12.
+si eleccion == 2: Bajas por la chimenea y caes en un caldero de jarabe de fresa. Delicioso, pero pegajoso.
+si eleccion == 3: gato: Las ventanas de los villanos siempre son fáciles de abrir. Es un dato curioso.
+
+mostrar burro centro
+burro: Shrek, este lugar me da escalofríos. Huele a algodón de azúcar y a mentiras.
+? ¿Qué buscas primero?
+* La oficina del Hada | sospecha += 1
+* El almacén de pociones
+* Una salida, por si acaso
+si eleccion == 1: En el escritorio hay un dibujo: Fiona y el Príncipe Encantador. Con corazones.
+si eleccion == 1: $ sospecha += 1
+si eleccion == 2: Miles de frascos brillan en estantes que llegan hasta el techo.
+si eleccion == 3: gato: Siempre pensando en el escape. Me gusta su estilo.
+
+ocultar burro
+mostrar hada centro
+ocultar gato
+De pronto aparece el Hada Madrina entre brillos y música de violines que sale de quién sabe dónde.
+hada: ¡Un ogro! En MI fábrica. Qué... inesperado.
+? ¿Cómo le hablas?
+* Con respeto, pidiéndole ayuda | cuentos += 1
+* Directo: "Sé lo que planeas." | sospecha += 1, valor += 1
+* Haciéndote el inocente
+si eleccion == 1: hada: ¿Ayuda? Querido, yo ayudo a la gente con finales felices. Y los ogros no tienen.
+si eleccion == 2: hada: ¿Planeo? Yo solo planeo bodas, sueños y bonitas coincidencias. Sonríe demasiado.
+si eleccion == 3: hada: ¿Perdido? Claro. Los ogros siempre están perdidos.
+
+hada: Mira, no hay finales felices para los ogros. Así funcionan los cuentos.
+? ¿Qué le respondes?
+* "Los cuentos se pueden cambiar." | valor += 1, amor += 1
+* "Lo sé. Por eso vine."
+* Rugirle | gruñon += 1
+si eleccion == 1: hada: Qué tierno. Equivocado, pero tierno.
+si eleccion == 2: hada: ¡Por fin alguien que entiende cómo funciona el mundo!
+si eleccion == 3: hada: Así no se habla con una dama. Y con un movimiento de varita, te saca de la fábrica.
+ocultar hada
+
+[afuera_fabrica]
+fondo noche
+ocultar todos
+mostrar shrek izquierda
+mostrar gato derecha
+mostrar burro centro
+Quedan afuera, en la noche. Por una ventana se ve el almacén de pociones.
+gato: Vi una poción que dice "Felices para siempre". Dice que convierte a quien la beba en lo que su amor necesita.
+? ¿Qué haces?
+* Entrar a robarla | valor += 1
+* Irse de regreso al palacio -> sin_pocion
+* Pensarlo bien primero
+si eleccion == 3: burro: Shrek, ¿y si no tienes que cambiar? ¿Y si Fiona te quiere así?
+si eleccion == 3: $ penso = 1
+si penso == 1 -> pensar_pocion
+ir robo
+
+[pensar_pocion]
+? ¿Qué decides después de pensarlo?
+* Robar la poción -> robo
+* Regresar al palacio sin ella -> sin_pocion | amor += 1
+
+[robo]
+fondo fabrica
+? ¿Quién entra por la poción?
+* Tú | valor += 1
+* Gato, que es sigiloso | gato += 1
+* Burro, que es pequeño | amistad += 1
+si eleccion == 1: Entras tirando dos estantes. Muy sigiloso todo.
+si eleccion == 2: gato: Silencioso como la noche, elegante como... ¡Ay! Pisó una cola de dragón de cerámica.
+si eleccion == 3: burro: ¡Lo logré! ¡Lo logré! Bueno, también tiré catorce frascos.
+
+Suena una alarma. Unos guardias de la fábrica corren hacia ustedes.
+? ¿Qué hacen?
+* Correr | valor += 1
+* Esconderse en un barril
+* Pelear | fama += 1
+si eleccion == 1: Corren por pasillos llenos de vapor de colores.
+si eleccion == 2: El barril estaba lleno de poción de risa. Salen riéndose sin parar.
+si eleccion == 3: Tú, el gato y Burro contra diez guardias. Ganan. Por poco.
+
+? La poción ya está en tus manos. Hay una nota en la etiqueta: "Efecto permanente si se besa antes de la medianoche."
+* Leer el resto de la letra pequeña | sospecha += 1
+* Guardar la poción sin leer más
+si eleccion == 1: "Si no hay beso antes de la medianoche, todo vuelve a ser como era."
+$ tiene_pocion = verdadero
+ir decidir_pocion
+
+[sin_pocion]
+fondo palacio
+ocultar todos
+mostrar shrek izquierda
+Regresas al palacio sin la poción. Fiona te está esperando.
+mostrar fiona derecha
+fiona: ¿Dónde estabas? Mi papá dice que te fuiste a cazar y que te perdiste.
+? ¿Le cuentas todo?
+* Toda la verdad | amor += 2, sospecha += 1
+* Solo una parte
+* "Me perdí, sí."
+si eleccion == 1: fiona: ¿Mi papá contrató a un gato? ¿Y mi hada madrina...? No puede ser.
+si eleccion == 2: fiona: Siento que me escondes algo.
+si eleccion == 3: fiona: Ajá. Se te movió la oreja.
+$ sin_pocion = verdadero
+ir capitulo12
+
+[decidir_pocion]
+fondo noche
+ocultar todos
+mostrar shrek centro
+Estás solo con la poción en las manos. La luna está alta.
+? ¿Te la tomas?
+* Sí. Por Fiona. -> tomar_pocion | pocion = 1
+* No. No quiero cambiar. -> sin_pocion | valor += 1
+* La guardas para decidir con Fiona -> sin_pocion | amor += 2, tiene_pocion = verdadero
+
+[tomar_pocion]
+Te la tomas de un trago. Sabe a fresa y a arrepentimiento.
+mostrar burro derecha
+burro: ¿Y? ¿Sientes algo? ¿Ya eres guapo? ...No veo cambios.
+? ¿Qué haces?
+* Esperar | valor += 0
+* Irte a dormir a un granero
+si eleccion == 1: Pasan los minutos. Nada. Empiezas a sentir sueño. Mucho sueño.
+si eleccion == 2: Te acuestas sobre la paja. Te duermes al instante.
+fondo pradera
+Al despertar, te miras en un charco. Eres... humano. Alto, de cabello castaño y cara de príncipe de cuento.
+burro: ¿Shrek? Yo... yo también cambié. ¡Soy un caballo! ¡Un caballo blanco y elegante!
+? ¿Qué sientes al verte así?
+* Raro | gruñon += 0
+* Feliz, por Fiona | amor += 1
+* Triste. Extrañas tus orejas
+si eleccion == 3: Te tocas la cabeza donde antes estaban tus orejas de trompeta. Las extrañas.
+mostrar gato centro
+gato: Señor... creo que también funcionó con la princesa. La poción hace efecto en quien uno ama.
+? ¿Qué haces?
+* Correr al palacio a buscar a Fiona -> capitulo12 | valor += 1
+* Primero practicar caminar como humano -> capitulo12

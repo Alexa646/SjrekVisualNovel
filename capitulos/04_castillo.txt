@@ -1,0 +1,169 @@
+# =====================================================================
+#  CAPÍTULO 4 — El castillo de la Dragona
+# =====================================================================
+
+[capitulo4]
+fondo bosque
+ocultar todos
+mostrar shrek izquierda
+mostrar burro derecha
+El viaje al castillo dura dos días por montañas y bosques secos.
+? Burro pregunta cada cinco minutos cuánto falta. ¿Qué haces?
+* Responderle con paciencia cada vez | amistad += 1
+* Inventar distancias absurdas | gruñon += 1
+* Enseñarle a contar árboles para distraerlo
+si eleccion == 1: Al minuto cuarenta tu paciencia es legendaria. Burro está impresionado.
+si eleccion == 2: shrek: Faltan mil quinientos días. burro: ¡¿QUÉ?! ...Ah, es broma. ¿Verdad?
+si eleccion == 3: Burro cuenta 412 árboles. Luego empieza a ponerles nombre.
+
+? Encuentran un arbusto con bayas moradas. ¿Las comen?
+* Tú las pruebas primero | valor += 1
+* Se las das a Burro primero | gruñon += 1
+* Mejor no
+si eleccion == 1: Saben horrible. Perfectas para un ogro. Burro decide no probarlas.
+si eleccion == 2: burro: Mmm... ¿por qué mi lengua está azul? ¿Shrek? ¿Shrek, por qué sonríes?
+si eleccion == 3: Buena decisión. Un conejo se come una y sale saltando en zigzag.
+
+burro: Shrek, ¿y tú cómo crees que es la princesa?
+? ¿Qué contestas?
+* "Seguro es mimada y odia a los ogros."
+* "No sé. No me importa."
+* "Debe ser valiente para aguantar tanto tiempo encerrada." | amor += 1
+si eleccion == 1: burro: Eso es muy prejuicioso para alguien a quien le hacen lo mismo.
+si eleccion == 1: Burro tiene razón. Odias cuando tiene razón.
+si eleccion == 3: burro: ¡Oh! Eso fue muy sensible de tu parte.
+
+Llueve. Se refugian en una cueva.
+fondo noche
+? ¿Qué hacen mientras esperan?
+* Cuentas historias de ogros | amistad += 1
+* Duermes | gruñon += 1
+* Juegan a adivinar sonidos
+si eleccion == 1: Le cuentas de tu abuelo, que se comió un ejército entero... de hormigas. Burro llora de risa.
+si eleccion == 2: Burro habla solo durante dos horas. Duermes como piedra.
+si eleccion == 3: burro: ¿Eso fue un trueno o tu estómago? shrek: Mi estómago. burro: Respeto.
+
+fondo castillo
+Al tercer día, aparece el castillo: torres negras, humo y un olor a azufre que llega hasta las nubes.
+burro: Huele... a peligro. Y a huevo podrido.
+shrek: A mí me huele a casa.
+? ¿Cómo se acercan?
+* Directo por el camino | valor += 1
+* Rodeando las rocas en silencio
+* Burro va primero a explorar | amistad -= 1
+si eleccion == 2: Avanzan en silencio. Burro tropieza con una calavera. Tanto silencio para nada.
+si eleccion == 3: burro: ¿Yo? ¿Primero? ¿Solo? ... Burro da dos pasos y regresa corriendo.
+
+[puente]
+fondo puente
+El castillo está sobre un lago de lava. Solo hay un puente de cuerdas viejas.
+burro: No. No, no, no. Ese puente se ve muy... cayéndose.
+? Burro tiembla al borde del puente.
+* Animarlo: "Mira mis pasos y no mires abajo." | amistad += 1
+* Cargarlo a la fuerza y cruzar rápido
+* Cruzar tú primero para probar el puente | valor += 1
+si eleccion == 1: Cruzan paso a paso. A mitad del puente Burro se ríe nervioso.
+si eleccion == 2: Cruzas con Burro gritando bajo el brazo. Él no te habla en tres minutos. Un récord.
+si eleccion == 3: El puente cruje, pero aguanta. burro: ¿Ves? ¡Aguanta! ...Ahora regresa por mí.
+si eleccion == 3: Regresas por él. Cruzan juntos.
+
+A mitad del puente una tabla se rompe bajo tu pie.
+? ¡La tabla cae a la lava!
+* Saltar a la siguiente tabla | valor += 1
+* Agarrarte de las cuerdas
+* Abrazar a Burro y esperar lo mejor | amistad += 1
+si eleccion == 1: Aterrizas. El puente se balancea como hamaca. Todo bien. Casi.
+si eleccion == 2: Las cuerdas te queman las manos, pero sigues ahí.
+si eleccion == 3: burro: ¿¡Ahora sí me abrazas!? Cruzan abrazados. Es raro. Funciona.
+
+burro: ¡Lo logramos! ¡Crucé un puente sobre LAVA!
+? ¿Qué le dices?
+* "Eres más valiente de lo que crees." | amistad += 1
+* "Gritaste todo el camino."
+* No decir nada y seguir
+si eleccion == 1: burro: ¿Valiente? ¿Yo? Voy a recordar esto para siempre.
+si eleccion == 2: burro: Grité VALIENTEMENTE.
+
+[dentro_castillo]
+fondo castillo
+Dentro, el castillo está lleno de armaduras vacías y huesos de caballeros que no tuvieron suerte.
+? ¿Qué haces con las armaduras?
+* Ponerte un casco, por si acaso | valor += 1
+* Revisar si hay algo útil | fama += 1
+* Pasar de largo
+si eleccion == 1: El casco te queda chico. Te lo pones igual. Te ves ridículo y protegido.
+si eleccion == 2: Encuentras un mapa del castillo dibujado por un caballero. "La princesa: torre más alta". Obvio.
+
+burro: Tú busca a la princesa, yo me quedo aquí cuidando... la retaguardia.
+? ¿Dejas que Burro se quede solo?
+* "Quédate cerca y grita si pasa algo." | amistad += 1
+* "Como quieras."
+* "No. Vienes conmigo." | amistad += 1
+si eleccion == 3: burro: Bueno... Pero un ruido raro llama tu atención por otro pasillo, y se separan sin querer.
+Te separas de Burro. A lo lejos se oye un rugido enorme, y luego un grito muy agudo.
+? ¿Qué haces?
+* Volver por Burro -> rescatar_burro | amistad += 2
+* Burro sabrá arreglárselas: seguir hacia la torre -> buscar_torre | gruñon += 1
+
+[buscar_torre]
+Subes escaleras interminables. El rugido se repite, cada vez más lejos.
+? Te encuentras con dos pasillos.
+* El de la izquierda, más oscuro
+* El de la derecha, con flores secas en el suelo | amor += 1
+si eleccion == 1: Es un callejón sin salida lleno de murciélagos. Regresas.
+si eleccion == 2: Las flores te llevan a una escalera de caracol. Hacia arriba.
+si eleccion == 1: Tomas el otro pasillo.
+? A medio camino escuchas a Burro gritar tu nombre.
+* Volver por él -> rescatar_burro | amistad += 1
+* Seguir subiendo -> capitulo5
+
+[rescatar_burro]
+mostrar dragona centro
+mostrar burro derecha
+Encuentras a Burro acorralado por una dragona gigantesca. Pero ella no parece querer comérselo.
+Más bien... parece encantada con él.
+burro: Oye, este... qué bonitos ojos tienes. ¿Ese humo es natural?
+dragona: Grrrr... ♥
+? La dragona está distraída.
+* Dejar que Burro siga hablando | dragona += 1
+* Atacar a la dragona por sorpresa | valor += 1, dragona -= 2
+* Aplaudirle a Burro en silencio | amistad += 1
+si eleccion == 1: burro: ...y además tu escama brilla muchísimo. ¿Usas algún producto?
+si eleccion == 2: Le jalas la cola. La dragona ruge furiosa y casi te tuesta.
+si eleccion == 3: Burro te ve y te guiña un ojo. Tiene todo bajo control. Más o menos.
+
+? La dragona te nota. Te mira con desconfianza.
+* Hacerle una reverencia | dragona += 1, cuentos += 1
+* Rugirle | gruñon += 1, dragona -= 1
+* Esconderte detrás de Burro
+si eleccion == 1: La dragona inclina la cabeza, sorprendida. Nadie le había hecho una reverencia.
+si eleccion == 2: dragona: GRRRRRRAAAAH. Pierdes ese concurso de rugidos.
+si eleccion == 3: burro: ¡Él es mi amigo! ¡Es bueno! ¡Huele raro, pero es bueno!
+
+burro: Shrek, creo que le gusto. ¿Qué hago?
+? ¿Qué le aconsejas a Burro?
+* "Sé tú mismo." | dragona += 1, amistad += 1
+* "Dile que es la criatura más hermosa que has visto." | dragona += 1
+* "Corre en cuanto te diga."
+si eleccion == 1: burro: ¿Yo mismo? ¡Eso nunca me había funcionado! ...Pero lo intentaré.
+si eleccion == 2: burro: Eres... la criatura más... hermosa. Y grande. Muy grande. dragona: ♥♥♥
+si eleccion == 3: Burro asiente muy serio. No va a correr. Está demasiado halagado.
+
+? ¿Qué haces mientras Burro la distrae?
+* Escabullirte hacia la torre -> capitulo5 | dragona_amiga = verdadero
+* Quedarte a ayudar a Burro -> quedarse_burro
+* Agarrar a Burro y huir los dos -> capitulo5 | dragona -= 1
+
+[quedarse_burro]
+Te quedas cerca. La dragona le da a Burro una flor del tamaño de un árbol.
+burro: Shrek... ¿qué se le da a una dragona en una primera cita?
+? ¿Qué sugieres?
+* Una canción
+* Un piropo sobre su fuego | dragona += 1
+* Una promesa de volver | dragona += 2
+si eleccion == 1: Burro canta algo inventado y desafinado. A la dragona le encanta.
+si eleccion == 2: burro: Tu fuego... ilumina mis días. Y calienta mis noches. Muy útil en invierno.
+si eleccion == 3: burro: Volveré. Lo prometo. Palabra de burro. La dragona suelta una lágrima de vapor.
+$ dragona_amiga = verdadero
+Aprovechas que están ocupados y subes a la torre.
+ir capitulo5

@@ -1,0 +1,159 @@
+# =====================================================================
+#  CAPÍTULO 14 — Después del baile
+# =====================================================================
+
+[capitulo14]
+fondo baile
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+Los invitados empiezan a salir de sus escondites: detrás de cortinas, bajo las mesas, dentro de un jarrón enorme.
+? ¿Qué es lo primero que haces?
+* Ayudar a levantar a los invitados caídos | fama += 1, cuentos += 1
+* Buscar a Burro y al Gato | amistad += 1, gato += 1
+* Quedarte junto a Fiona | amor += 1
+si eleccion == 1: Una marquesa te da las gracias y luego se da cuenta de que eres un ogro. Te da las gracias otra vez.
+si eleccion == 2: burro: ¡Estoy bien! Bueno, tengo ponche en las orejas, pero estoy bien.
+si eleccion == 3: fiona: No te vayas lejos. Por favor.
+
+mostrar encantador centro
+El Príncipe Encantador sale de debajo de la mesa de postres, cubierto de crema.
+encantador: ¡Esto no se va a quedar así! ¡Mi madre volverá! ¡Y yo seré rey!
+? ¿Qué haces con el príncipe?
+* Dejarlo ir | cuentos += 1
+* Pedir que lo encierren | fama += 1
+* Darle un consejo | valor += 1
+si eleccion == 1: El príncipe se va corriendo, resbalando en la crema cada tres pasos.
+si eleccion == 2: Los guardias, que ahora te obedecen a ti, se lo llevan entre quejas sobre su cabello.
+si eleccion == 3: shrek: Intenta ser feliz con lo que eres. Funciona mejor que las pociones.
+si eleccion == 3: encantador: ...¿Eso es todo? Qué consejo tan horrible. Se va, pero se queda pensando.
+ocultar encantador
+
+mostrar lillian centro
+La reina Lillian se acerca entre los escombros.
+lillian: Shrek. Le debo una disculpa. Juzgué a mi yerno por su cara, y no por su corazón.
+? ¿Qué le respondes?
+* "No se preocupe, majestad. Me pasa seguido." | reina += 1
+* "Gracias. Eso significa mucho." | reina += 2
+* "Fiona se merece la disculpa más que yo." | reina += 1, amor += 1
+si eleccion == 1: lillian: Ojalá dejara de pasarte. A partir de hoy, en este reino, deja de pasar.
+si eleccion == 2: La reina te da un abrazo. Huele a rosas. Tú hueles a pantano. A ella no le importa.
+si eleccion == 3: lillian: Tienes razón. Hija, perdóname. Fiona abraza a su mamá.
+
+si harold_rana: mostrar harold izquierda
+si harold_rana: harold: Croac. Hijo, perdóname tú también. Fui un rey cobarde y un papá peor.
+si harold_rana -> perdon_harold
+ir perdon_harold_normal
+
+[perdon_harold]
+? ¿Perdonas al rey Harold?
+* "Claro que sí, Harold." | suegro += 2
+* "Con el tiempo." | suegro += 1
+* "Depende de cómo trate a Fiona."
+si eleccion == 1: harold: Croac. Gracias. Ahora entiendo lo que es no ser lo que los demás esperan.
+si eleccion == 2: harold: Es justo. Muy justo.
+si eleccion == 3: harold: Como una reina. Siempre. Lo prometo.
+ir decision_final
+
+[perdon_harold_normal]
+mostrar harold izquierda
+harold: Shrek... yo... le pagué a un gato para que te atacara. Y casi le doy una poción a mi propia hija.
+? ¿Qué le dices al rey?
+* "Ya pasó. Lo importante es que no lo hizo." | suegro += 2
+* "Eso no se olvida tan fácil." | gruñon += 1
+* "¿Por qué lo hizo?"
+si eleccion == 1: harold: Eres mejor persona que yo. Y mejor ogro que cualquier príncipe.
+si eleccion == 2: harold: Lo sé. Me lo voy a ganar. Te lo prometo.
+si eleccion == 3: harold: Porque el hada me ayudó hace años a ser rey. Le debía todo. Pero no le debía a mi hija.
+? El rey te tiende la mano.
+* Darle la mano | suegro += 1
+* Darle un abrazo | suegro += 2
+* Dejarlo con la mano extendida un rato, y luego dársela
+si eleccion == 2: harold: ¡Uf! Qué fuerza. Bueno... bienvenido a la familia, hijo.
+si eleccion == 3: harold: Me lo merezco. Me lo merezco totalmente.
+
+[decision_final]
+fondo baile
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+si pocion == 1 -> medianoche
+ir oferta_corona
+
+# ----------------------------------------------- con poción: la medianoche
+[medianoche]
+El reloj marca las once y cincuenta y cinco. Si se besan antes de la medianoche, la poción será permanente.
+fiona: Shrek... podríamos quedarnos así. Humanos. Mi papá nos aceptaría. Todo sería más fácil.
+? ¿Qué piensas?
+* "¿Eso es lo que tú quieres?" | amor += 1
+* "Sería más fácil, sí."
+* "Yo me enamoré de una ogra." | amor += 2
+si eleccion == 1: fiona: Yo quiero lo que tú quieras. Y que seas feliz.
+si eleccion == 2: fiona: Más fácil no siempre es mejor.
+si eleccion == 3: fiona: Y yo de un ogro. Uno gruñón, que come gusanos.
+
+? Faltan tres minutos. Burro está a tu lado, todavía convertido en un elegante caballo blanco.
+* Preguntarle a Burro qué piensa | amistad += 1
+* Preguntarle al Gato | gato += 1
+* No preguntarle a nadie
+si eleccion == 1: burro: Yo extraño mis orejas. Pero si tú eres feliz así, yo también.
+si eleccion == 2: gato: Señor, las botas no hacen al gato. Ni la cara hace al ogro.
+
+? Dos minutos. ¿Qué decides?
+* Besarla ahora y quedarse humanos -> eleccion_humanos
+* Esperar a que pase la medianoche -> eleccion_ogros | amor += 2
+
+[eleccion_humanos]
+La besas. Una luz dorada los envuelve. Las campanas dan las doce.
+Cuando abres los ojos, siguen siendo humanos. Para siempre.
+$ destino = 1
+ir capitulo15
+
+[eleccion_ogros]
+Las campanas dan las doce. Una brisa verde los envuelve.
+Tus orejas vuelven. Tu panza vuelve. Fiona vuelve a ser ella.
+fiona: Hola, ogro.
+shrek: Hola, ogra.
+Burro vuelve a ser burro. burro: ¡Mis orejas! ¡Las extrañaba muchísimo!
+$ destino = 2
+ir capitulo15
+
+# ----------------------------------------------- sin poción: la corona
+[oferta_corona]
+si suegro >= 7 -> corona
+fiona: Shrek, vámonos a casa. Al pantano. Ya tuve suficiente reino por un tiempo.
+? ¿Qué respondes?
+* "Vámonos." | amor += 1
+* "Quedémonos unos días más, por tu mamá." | reina += 1
+si eleccion == 2: fiona: Eso fue muy dulce. Unos días. Luego al pantano.
+$ destino = 2
+ir capitulo15
+
+[corona]
+mostrar harold centro
+harold: Shrek, Fiona... Ya estoy viejo. Y quizás soy una rana, o quizás no, pero ya no quiero ser rey.
+harold: El reino necesita a alguien que sepa ver más allá de las apariencias.
+harold: ¿Aceptarían la corona de Muy Muy Lejano?
+? Te ofrecen el reino entero.
+* "¿Yo? ¿Rey? ¿En serio?"
+* "Fiona, ¿tú qué piensas?" | amor += 1
+* "Prefiero mi pantano."
+si eleccion == 1: harold: Totalmente en serio. Ya demostraste ser más rey que yo.
+si eleccion == 2: fiona: Pienso que serías un rey muy raro. Y muy bueno. Pero la decisión es de los dos.
+si eleccion == 3: harold: Lo sé. Pero piénsalo. Por favor.
+? Tu decisión final:
+* Aceptar la corona -> aceptar_corona | fama += 2
+* Rechazarla y volver al pantano -> rechazar_corona | amor += 1
+
+[aceptar_corona]
+mostrar fiona derecha
+harold: ¡Larga vida al rey Shrek y a la reina Fiona!
+El salón entero aplaude. Al principio con miedo. Después con ganas.
+$ destino = 3
+ir capitulo15
+
+[rechazar_corona]
+shrek: Gracias, Harold. Pero nuestro reino es un pantano. Y es perfecto así.
+harold: Lo entiendo. Visítenos. Seguido. Traigan... gusanos, si quieren.
+$ destino = 2
+ir capitulo15

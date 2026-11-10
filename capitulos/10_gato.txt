@@ -1,0 +1,156 @@
+# =====================================================================
+#  CAPÍTULO 10 — El gato espadachín
+# =====================================================================
+
+[capitulo10]
+fondo palacio
+ocultar todos
+mostrar harold centro
+A la mañana siguiente, el rey Harold te invita a una "cacería entre hombres" en el bosque.
+harold: Así nos conocemos mejor. Solo usted y yo. En el bosque. Lejos de todos.
+? ¿Aceptas?
+* "Claro, majestad." | suegro += 1
+* (si sospecha >= 2) "¿Y por qué tan lejos de todos?" | sospecha += 1
+* "Solo si viene Burro." | amistad += 1
+si eleccion == 2: harold: ¡Por... la tranquilidad! Sí. El rey suda mucho para ser tan temprano.
+si eleccion == 3: harold: Está bien, que venga el animal ese.
+
+mostrar fiona derecha
+fiona: Me alegra que lo intentes con mi papá. Gracias.
+? ¿Qué le dices a Fiona antes de irte?
+* "Lo hago por ti." | amor += 1
+* "Si no regreso, la culpa es de tu papá." | gruñon += 1
+* (si sospecha >= 2) "Fiona, ¿conoces a un hada con alas brillantes?" | sospecha += 1
+si eleccion == 1: fiona: Lo sé. Y por eso te quiero.
+si eleccion == 2: fiona: ¡Shrek! ...Bueno, un poquito de razón tienes.
+si eleccion == 3: fiona: ¿Mi hada madrina? Hace años que no la veo. ¿Por qué?
+
+[bosque_cacería]
+fondo bosque
+ocultar todos
+mostrar shrek izquierda
+El rey no aparece. Te dejó un mapa que lleva a un claro muy oscuro.
+? ¿Qué haces?
+* Seguir el mapa
+* Esperar al rey en el camino
+* Romper el mapa y regresar | gruñon += 1
+si eleccion == 1: El claro está lleno de hojas, sombras y silencio. Demasiado silencio.
+si eleccion == 2: Una hora después, sigues solo. Decides avanzar.
+si eleccion == 3: Das tres pasos de regreso y escuchas algo moverse entre los árboles.
+
+mostrar burro derecha
+si amistad >= 15: burro: ¡Shrek! Te seguí. No me gustaba la cara del rey cuando te dio ese mapa.
+
+De entre las ramas salta un gato con botas, sombrero de pluma y una espada diminuta.
+mostrar gato centro
+gato: ¡Alto ahí, ogro! Me pagaron muy bien por tu cabeza. Nada personal.
+? El gato te apunta con su espada. ¿Qué haces?
+* Pelear | valor += 1
+* Intentar hablar con él | gato += 1
+* Dejar que Burro lo distraiga | amistad += 1
+si eleccion == 1: Es rapidísimo. Te pica la panza, la oreja y la rodilla antes de que muevas un dedo.
+si eleccion == 2: gato: ¿Hablar? Los ogros no hablan. Bueno, tú sí. Qué raro.
+si eleccion == 3: burro: ¡Oye, gatito! ¿Te gustan las madejas? El gato duda un segundo.
+
+? El gato salta sobre tu espalda. ¿Cómo te lo quitas?
+* Rodar en el pasto
+* Sacudirte como perro mojado
+* Agarrarlo de la cola | valor += 1
+si eleccion == 1: El gato sale volando hacia un arbusto.
+si eleccion == 2: El gato sale volando hacia un árbol.
+si eleccion == 3: Lo sostienes de la cola, al revés. Su sombrero cae. Su dignidad también.
+
+gato: ¡Suéltame, bestia! ¡Soy un caballero! ¡Exijo un trato digno!
+? Tienes al gato en tus manos. ¿Qué haces?
+* Soltarlo con cuidado | gato += 2, cuentos += 1
+* Amenazarlo para que diga quién lo mandó | sospecha += 1
+* Lanzarlo al río | gruñon += 1, gato -= 1
+si eleccion == 1: gato: ...Me perdonaste la vida. Eso cambia las cosas.
+si eleccion == 2: gato: ¡Fue el rey! El rey Harold me pagó para que te... retirara del reino.
+si eleccion == 3: El gato sale del río chorreando y furioso. Pero no se va.
+
+gato: Tengo una deuda de honor contigo. Mi espada está a tus órdenes.
+? ¿Qué piensas?
+* "Bienvenido, gato." | gato += 1
+* "No necesito ayuda." | gruñon += 1
+* Le preguntas a Burro qué opina | amistad += 1
+si eleccion == 2: gato: Todos necesitan ayuda. Especialmente quien dice que no.
+si eleccion == 3: burro: ¿Otro amigo? Bueno... pero yo sigo siendo el número uno. ¿Verdad?
+si eleccion == 3: shrek: Siempre, Burro.
+
+[conversacion_gato]
+fondo bosque
+ocultar todos
+mostrar gato derecha
+mostrar shrek izquierda
+gato: Señor ogro, el rey no lo quiere a usted con su hija. Pero no fue idea suya. Lo presionaron.
+? ¿Le preguntas más?
+* "¿Quién lo presionó?" | sospecha += 1
+* "¿Por qué me lo dices?" | gato += 1
+* "No me importa. Me quiero ir."
+si eleccion == 1: gato: El Hada Madrina. Tenía planeado casar a Fiona con su hijo, el Príncipe Encantador.
+si eleccion == 2: gato: Porque un caballero paga sus deudas. Y porque usted me cae bien. Un poco.
+si eleccion == 3: gato: Huir no le queda a alguien de su tamaño.
+
+? ¿Qué sientes al saber que el rey quería deshacerse de ti?
+* Enojo | gruñon += 1
+* Tristeza | amor += 1
+* Ganas de demostrarle que se equivoca | valor += 1
+si eleccion == 1: Pateas un tronco. Se rompe en tres pedazos.
+si eleccion == 2: shrek: Tal vez tenga razón. Tal vez Fiona merece un príncipe.
+si eleccion == 3: shrek: Voy a hacer que ese rey se trague sus palabras.
+
+mostrar burro centro
+burro: Shrek, ¿y si Fiona estaría mejor con... no sé, alguien más normal?
+? ¿Qué le contestas?
+* "Ella me eligió a mí." | valor += 1, amor += 1
+* "Tal vez tengas razón."
+* "¿Tú también, Burro?" | amistad -= 1
+si eleccion == 2: burro: ¡No! ¡No quise decir eso! ¡Era una pregunta tonta!
+si eleccion == 3: burro: ¡No, no! Solo digo lo que diría alguien que no te conoce.
+
+gato: Señor, he oído que el Hada Madrina tiene una fábrica de pociones. Ahí hay de todo: amor, belleza, felicidad...
+? ¿Qué te parece?
+* "¿Pociones para qué?"
+* "Vamos a verla. Quiero respuestas." | valor += 1, sospecha += 1
+* "No necesito pociones."
+si eleccion == 1: gato: Para ser lo que uno quiera ser. Para que el rey lo acepte a usted, por ejemplo.
+si eleccion == 3: gato: Nadie las necesita. Hasta que las necesita.
+
+? ¿Cómo van a la fábrica?
+* Caminando por el bosque
+* Robando un caballo del rey | gruñon += 1, suegro -= 1
+* Gato conoce un atajo | gato += 1
+si eleccion == 2: El caballo se llama Gerardo. Es muy educado. Lo devuelven después.
+si eleccion == 3: El atajo pasa por una taberna. gato: Siempre paso por esta taberna.
+
+[taberna]
+fondo taberna
+ocultar todos
+mostrar gato derecha
+mostrar shrek izquierda
+En la taberna hay brujas, piratas, un cíclope y el Hombre Lobo de cuento jugando cartas.
+? ¿Qué pides?
+* Leche, como el gato
+* Jugo de pantano
+* Nada | gruñon += 1
+si eleccion == 1: gato: Un ogro con buen gusto. Brindemos.
+si eleccion == 1: $ gato += 1
+si eleccion == 2: El tabernero te sirve algo verde que se mueve. Está buenísimo.
+
+? Un pirata te reta a vencerlo en vencidas. ¿Aceptas?
+* Sí | fama += 1, valor += 1
+* No
+* Dejar que el gato acepte por ti | gato += 1
+si eleccion == 1: Le ganas en dos segundos. Toda la taberna te aplaude.
+si eleccion == 3: El gato gana con trampa, pero con estilo.
+
+gato: El tabernero sabe dónde está la fábrica. Pero no habla gratis.
+? ¿Cómo lo convences?
+* Le pagas con tu escama de dragona (si la tienes) o con tus monedas
+* Lo asustas un poquito | gruñon += 1
+* Le cuentas tu historia de amor | cuentos += 1
+si eleccion == 1: tabernero: Hmm. Aceptable. La fábrica está tras la colina, donde salen burbujas moradas.
+si eleccion == 2: El tabernero habla rapidísimo. Te dice todo y más.
+si eleccion == 3: El tabernero llora. Te da la dirección y una servilleta para tus lágrimas también.
+ir acertijos

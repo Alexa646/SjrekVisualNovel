@@ -1,0 +1,79 @@
+# =====================================================================
+#  EL OGRO DEL PANTANO — historia fan inspirada en Shrek 1 y Shrek 2
+#  Diálogos originales. Más de 300 decisiones y 14 finales.
+#  Tú juegas como Shrek.
+#
+#  Variables principales:
+#    amistad  -> tu amistad con Burro
+#    amor     -> lo que Fiona siente por ti
+#    valor    -> tu valentía
+#    cuentos  -> cómo te ven las criaturas de cuento
+#    gruñon   -> qué tan gruñón eres
+#    fama     -> tu reputación en los reinos
+#    dragona  -> qué tanto te aprecia la Dragona
+#    suegro / reina / gato / sospecha -> (segunda parte)
+# =====================================================================
+
+titulo "El ogro del pantano"
+
+personaje shrek "Shrek" #b5a36a
+personaje burro "Burro" #a9a9b5
+personaje fiona "Fiona" #e8a26a
+personaje farquaad "Lord Farquaad" #c0504d
+personaje dragona "Dragona" #d9667f
+personaje pinocho "Pinocho" #c49a6c
+personaje lobo "Lobo" #8a8a9a
+personaje cerdito "Cerdito" #f0a8b8
+personaje jengibre "Hombre de Jengibre" #d08a4a
+personaje espejo "Espejo Mágico" #9ad0e0
+personaje guardia "Guardia" #7a7a8a
+personaje harold "Rey Harold" #7a9ad0
+personaje lillian "Reina Lillian" #c8a0d8
+personaje hada "Hada Madrina" #a0b8f0
+personaje encantador "Príncipe Encantador" #f0d070
+personaje gato "Gato con Botas" #e0b050
+
+fondo_def pantano #5d6b3a #1c2410
+fondo_def casa #6a4a2a #1a1008
+fondo_def bosque #3f5a3a #101a10
+fondo_def duloc #c9d3e0 #7a8796
+fondo_def plaza #d8c8a8 #7a6a50
+fondo_def calabozo #2a2a30 #08080a
+fondo_def castillo #5a3030 #140808
+fondo_def puente #8a3a1a #1a0500
+fondo_def torre #4a3a5a #120c18
+fondo_def fogata #3a2a50 #0a0614
+fondo_def pradera #9ab870 #3a5020
+fondo_def molino #2a3550 #080b14
+fondo_def atardecer #f0a060 #5a2a40
+fondo_def iglesia #e8dcc8 #8a7a66
+fondo_def playa #f0d8a0 #3a8ab0
+fondo_def carruaje #5a4030 #1a1008
+fondo_def lejano #f0c8d8 #8a6a90
+fondo_def palacio #e0c890 #6a5030
+fondo_def comedor #8a3a3a #2a0a0a
+fondo_def taberna #4a3020 #120806
+fondo_def fabrica #7a6aa0 #1a1430
+fondo_def noche #1a2040 #04060c
+fondo_def baile #f0a0c0 #4a1a3a
+
+# ---------------------------- PRIMERA PARTE
+incluir capitulos/01_pantano.txt
+incluir capitulos/02_burro.txt
+incluir capitulos/03_duloc.txt
+incluir capitulos/04_castillo.txt
+incluir capitulos/05_torre.txt
+incluir capitulos/06_viaje.txt
+incluir capitulos/06b_mercado.txt
+incluir capitulos/07_boda.txt
+# ---------------------------- SEGUNDA PARTE
+incluir capitulos/08_invitacion.txt
+incluir capitulos/08b_posada.txt
+incluir capitulos/09_lejano.txt
+incluir capitulos/10_gato.txt
+incluir capitulos/10b_acertijos.txt
+incluir capitulos/11_pocion.txt
+incluir capitulos/12_rescate.txt
+incluir capitulos/13_baile.txt
+incluir capitulos/14_final.txt
+incluir capitulos/15_epilogo.txt

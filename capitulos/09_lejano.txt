@@ -1,0 +1,186 @@
+# =====================================================================
+#  CAPÍTULO 9 — Conociendo a los suegros
+# =====================================================================
+
+[capitulo9]
+fondo lejano
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+Todo el reino salió a las calles para recibir a la princesa. Hay trompetas, confeti y una alfombra roja kilométrica.
+Cuando la puerta del carruaje se abre... el confeti deja de caer. La música se detiene.
+? Cientos de personas te miran en silencio. ¿Qué haces?
+* Bajar primero y ofrecerle la mano a Fiona | amor += 1, valor += 1
+* Saludar a la multitud con una gran sonrisa | fama += 1
+* Volver a meterte al carruaje | gruñon += 1
+si eleccion == 1: Un murmullo recorre la multitud. Al menos el ogro tiene modales.
+si eleccion == 2: Una señora se desmaya. Un niño te saluda. Empate.
+si eleccion == 3: fiona: Shrek, sal de ahí. Fiona te jala del brazo con fuerza de ogra.
+
+mostrar harold centro
+mostrar lillian derecha
+ocultar fiona
+El rey Harold y la reina Lillian esperan en las escaleras del palacio.
+harold: ¿Esa es... nuestra hija? ¿Y ese es...?
+lillian: Harold, sonríe. Sonríe, por favor.
+? ¿Cómo te presentas?
+* "Mucho gusto, majestades. Soy Shrek." Con una reverencia | suegro += 1, reina += 1
+* "Hola, suegros." | gruñon += 1
+* Le das la mano al rey con demasiada fuerza
+si eleccion == 1: lillian: Un ogro con modales. Qué... sorpresa tan agradable.
+si eleccion == 2: harold: ¿Su... suegros? Harold se pone pálido.
+si eleccion == 3: harold: ¡Mi mano! ¡Mi mano real!
+
+? Le das el regalo a la reina. ¿Qué dices?
+* "Son del pantano. Las elegí yo." | reina += 1
+* "Fiona dijo que trajera algo."
+* No dices nada, solo se lo das
+si eleccion == 1: lillian: Gracias, Shrek. Huelen... muy auténticas.
+si eleccion == 2: lillian: Qué honesto. Igual se agradece.
+
+harold: Pasen, pasen. La cena está servida. ¡Qué alegría! (Su ojo tiembla).
+? ¿Qué haces mientras caminan al comedor?
+* Hacerle plática al rey | suegro += 1
+* Admirar los cuadros del palacio | reina += 1
+* Buscar la cocina con la mirada
+si eleccion == 1: harold: ¿Le gusta la cacería, joven? Hmm. Interesante. Muy interesante.
+si eleccion == 2: lillian: Ese de ahí es Fiona de bebé. ¿Verdad que era hermosa? shrek: Lo sigue siendo.
+si eleccion == 2: $ amor += 1
+si eleccion == 3: Huele a pollo. A mucho pollo. Tu estómago ruge más fuerte que tú.
+
+[cena]
+fondo comedor
+ocultar todos
+mostrar harold izquierda
+mostrar shrek centro
+mostrar fiona derecha
+La mesa es larguísima. Hay más cubiertos de los que sabías que existían.
+? ¿Qué cubierto usas para la sopa?
+* El más grande, obviamente
+* Preguntas a Fiona en voz baja | amor += 1
+* Te tomas la sopa directo del plato | gruñon += 1
+si eleccion == 1: Era el cucharón para servir. El rey levanta una ceja.
+si eleccion == 2: fiona: El redondo. El de la izquierda. El otro izquierdo.
+si eleccion == 3: Sorbes ruidosamente. Fiona, sin pensarlo, hace lo mismo. Los reyes se miran horrorizados.
+
+harold: Dígame, ¿de qué vive usted?
+? ¿Qué le contestas al rey?
+* "Tengo un pantano. Es tranquilo y es mío." | valor += 1
+* "Rescato princesas. Bueno, solo a una."  | suegro += 1, amor += 1
+* "De asustar aldeanos." | gruñon += 1, suegro -= 1
+si eleccion == 1: harold: ¿Un pantano? ¿Mi hija vive en un PANTANO?
+si eleccion == 2: harold: ...Hmm. Eso es cierto. Supongo.
+si eleccion == 3: harold: ¡¿Y mi hija vive con eso?!
+
+lillian: ¿Y piensan tener hijos?
+harold: ¡Lillian! ...Aunque ahora que lo dices, ¿qué clase de nietos tendríamos?
+? Esa pregunta te cae como piedra.
+* "Nietos verdes y preciosos." | reina += 1
+* "Eso no es asunto suyo." | suegro -= 1
+* Te atragantas con la comida
+si eleccion == 1: lillian: Ay. Qué imagen tan... colorida.
+si eleccion == 2: harold: ¡Todo lo de mi hija es asunto mío!
+si eleccion == 3: Burro, que se coló bajo la mesa, te da palmadas en la espalda.
+
+harold: Cuando ella era niña, la mandamos a esa torre por su bien. Para que un príncipe la rescatara.
+? ¿Qué le dices?
+* "La mandaron sola. A una torre. Con un dragón." | valor += 1, suegro -= 1
+* "Bueno, la rescató un ogro. Lo siento." | suegro += 1
+* No dices nada, por Fiona | amor += 1
+si eleccion == 1: harold: ¡No sabe usted nada de ser padre!
+si eleccion == 2: harold: ...No es su culpa. Supongo.
+si eleccion == 3: Fiona aprieta tu mano debajo de la mesa.
+
+? El rey te mira con desprecio. La tensión crece. ¿Qué haces?
+* Calmar las cosas con un brindis | suegro += 1, reina += 1
+* Contestarle al mismo nivel | gruñon += 1, suegro -= 2
+* Pedir permiso para salir un momento
+si eleccion == 1: shrek: Por Fiona. Que es lo único en lo que estamos de acuerdo. lillian: Por Fiona.
+si eleccion == 2: Terminan gritándose de un lado al otro de la mesa. El perro real huye.
+si eleccion == 3: harold: Sí, sí, vaya. Tómese su tiempo. Mucho tiempo.
+
+si suegro <= -3: La cena termina en un desastre absoluto. Fiona se encierra en su antiguo cuarto.
+si suegro > -3: La cena termina con una tensión que se puede cortar con cuchillo.
+
+[noche_palacio]
+fondo noche
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+Esa noche, en la habitación de Fiona de niña, todo es rosa.
+fiona: Sabía que esto pasaría. ¿No podías esforzarte un poco más?
+? ¿Qué le respondes?
+* "Tienes razón. Lo siento." | amor += 2
+* "¡Tu papá empezó!" | gruñon += 1
+* "Tal vez venir aquí fue un error."
+si eleccion == 1: fiona: ...Gracias. Él tampoco fue justo contigo. Mañana lo intentamos otra vez.
+si eleccion == 2: fiona: ¡Eso no importa! Es MI familia.
+si eleccion == 3: fiona: ¿Venir aquí, o casarte conmigo?
+si eleccion == 3: $ amor -= 1
+
+? Fiona está triste. ¿Qué haces?
+* Abrazarla | amor += 1
+* Darle espacio
+* Proponerle irse ahora mismo al pantano -> regreso_anticipado_pregunta
+si eleccion == 1: Se queda en tus brazos un rato largo.
+si eleccion == 2: Sales al balcón a mirar las estrellas de un reino que no te quiere.
+ir balcon
+
+[regreso_anticipado_pregunta]
+shrek: Vámonos. Mañana temprano. Volvamos a casa.
+? Fiona te mira largo rato.
+* "Es en serio. No pertenezco aquí." -> regreso_anticipado
+* "Olvídalo. Perdón. Nos quedamos." -> balcon | amor += 1
+
+[regreso_anticipado]
+fiona: Si es lo que necesitas... nos vamos.
+Se van antes del amanecer. Fiona mira el palacio por la ventana hasta que desaparece.
+De regreso al pantano todo vuelve a la normalidad. Casi.
+final regreso_anticipado "Regreso anticipado" "Te salvaste de los suegros... pero Fiona se quedó con las ganas de reconciliarse."
+
+[balcon]
+fondo noche
+ocultar todos
+mostrar shrek centro
+Sales al balcón. Abajo, en el jardín, ves algo raro: el rey Harold hablando en secreto con una mujer de alas brillantes.
+? ¿Qué haces?
+* Escuchar a escondidas | sospecha += 2
+* Ignorarlo y volver adentro
+* Bajar a saludar | valor += 1
+si eleccion == 1: Escuchas palabras sueltas: "un trato", "mi hijo el príncipe", "deshacerse del ogro".
+si eleccion == 2: Seguro es una reunión de reyes. Cosas aburridas.
+si eleccion == 3: Cuando llegas, la mujer ya desapareció entre brillos. El rey se pone nervioso.
+si eleccion == 3: $ sospecha += 1
+
+mostrar burro derecha
+burro: ¡Shrek! Te estaba buscando. Estuve hablando con los sirvientes. Dicen cosas raras de un hada...
+? ¿Qué le preguntas a Burro?
+* "¿Qué dicen del hada?" | sospecha += 1
+* "¿Cómo te metiste al palacio?"
+* "Ahora no, Burro."
+si eleccion == 1: burro: Que hace tratos con el rey. Y que tiene un hijo príncipe muy guapo y muy creído.
+si eleccion == 2: burro: Por la cocina. Me comí doce panqués. Ese es otro tema.
+si eleccion == 3: burro: Bueno, pero luego no digas que no te avisé.
+
+? Burro te pregunta qué vas a hacer con lo que escuchaste.
+* Contárselo a Fiona mañana | amor += 1, sospecha += 1
+* Investigar por tu cuenta | sospecha += 1
+* Olvidarlo
+si eleccion == 1: burro: Buena idea. Las parejas no se guardan secretos. Bueno, ustedes ya tuvieron suficientes.
+si eleccion == 3: burro: Okey... pero yo no lo voy a olvidar. Tengo memoria de burro.
+
+? Antes de dormir, ¿qué haces?
+* Escribirle una nota de disculpa al rey | suegro += 1
+* Darle las buenas noches a la reina | reina += 1
+* Irte directo a dormir
+si eleccion == 1: Escribes: "Perdón por la sopa. Y por los gritos". La dejas bajo su puerta.
+si eleccion == 2: lillian: Buenas noches, Shrek. Me alegra que estés aquí. De verdad.
+
+? En la cama rosa de Fiona, no logras dormir. ¿Qué haces?
+* Contar ovejas | gruñon += 0
+* Mirar a Fiona dormir | amor += 1
+* Levantarte por un vaso de leche
+si eleccion == 1: En la oveja 300 te das cuenta de que estás contando decisiones. Raro.
+si eleccion == 2: Ronca. Igual que tú. Sonríes en la oscuridad.
+si eleccion == 3: En la cocina encuentras a Burro comiéndose el panqué número trece.
+ir capitulo10

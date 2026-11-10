@@ -1,0 +1,270 @@
+# =====================================================================
+#  CAPÍTULO 15 — Epílogo: lo que vino después
+#  (Muchas decisiones pequeñas que cambian cómo termina tu historia)
+# =====================================================================
+
+[capitulo15]
+fondo palacio
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+EPÍLOGO
+Al día siguiente, el reino organiza una fiesta en su honor. Esta vez, nadie se esconde al verte.
+? ¿Con qué ropa vas a la fiesta?
+* La camisa que te cosió Fiona | amor += 1
+* Tu chaleco de siempre
+* Lo que la reina mandó hacer para ti | reina += 1
+si eleccion == 1: Ya tiene un parche de ponche. Ahora es todavía más especial.
+si eleccion == 3: Es de terciopelo morado. Te pica. Sonríes igual.
+
+? ¿Qué pides que sirvan en la fiesta?
+* Comida de pantano para todos | cuentos += 1
+* Lo que quieran los reyes | suegro += 1
+* De todo un poco | fama += 1
+si eleccion == 1: Los nobles prueban la sopa de ojos de pescado. Uno pide la receta.
+si eleccion == 3: Pastel real junto a gusanos asados. Una mesa histórica.
+
+? ¿A quién sientas junto a ti?
+* A Burro | amistad += 1
+* Al Gato | gato += 1
+* A los reyes | suegro += 1, reina += 1
+si eleccion == 1: burro: ¡Lugar de honor! ¡Sabía que yo era el número uno!
+si eleccion == 2: gato: Me honra, señor. Y me quedo con su postre si no se lo come.
+si eleccion == 3: lillian: Qué detalle. Harold, siéntate derecho.
+
+? Te piden un discurso. ¿Qué dices?
+* Algo corto y gruñón | gruñon += 1
+* Le das las gracias a cada uno de tus amigos | amistad += 1, cuentos += 1
+* Hablas de Fiona | amor += 1
+si eleccion == 1: shrek: Gracias. Coman. Ya. Todos aplauden como si fuera el discurso más bello del mundo.
+si eleccion == 2: Nombras a Burro, al Gato, a Pinocho, al Lobo, a los cerditos... Burro llora a mares.
+si eleccion == 3: shrek: Ella es lo mejor que me ha pasado. Y eso que me pasaron cosas muy raras.
+
+mostrar burro centro
+burro: ¡Shrek! ¡La Dragona vino a la fiesta! Bueno, no cabe por la puerta, pero está asomada por la ventana.
+? ¿Qué haces?
+* Llevarle un plato de comida | dragona += 1
+* Saludarla desde lejos
+* Invitarla a bailar en el jardín | dragona += 2
+si eleccion == 1: La Dragona se come el plato. Con todo y plato.
+si eleccion == 3: Bailan en el jardín. Bueno, ella baila y tú esquivas. Burro aplaude.
+
+? Pinocho te pide consejo: quiere ser un niño de verdad.
+* "Ya eres de verdad, Pinocho." | cuentos += 1
+* "Busca a un hada. Pero no a esa."
+* "Primero deja de mentir."
+si eleccion == 1: pinocho: ¿Lo dices en serio? Su nariz no crece. Era verdad.
+si eleccion == 2: pinocho: ¡Ja! Buen punto.
+si eleccion == 3: pinocho: ¡Yo nunca miento! ...La nariz le crece cinco centímetros.
+
+? El Lobo quiere saber si puede seguir viviendo en tu pantano.
+* "Claro, pero en tu propia cama." | cuentos += 1
+* "Ni hablar." | gruñon += 1
+* "Si cocinas los domingos."
+si eleccion == 3: lobo: Hago unos pasteles de abuelita deliciosos. De la receta, no de la abuelita.
+
+? Los tres cerditos te ofrecen construirte una casa nueva.
+* "De ladrillo, por favor." | cuentos += 1
+* "Mi casa está perfecta."
+* "Mejor constrúyanle una al Lobo."
+si eleccion == 3: Los cerditos se miran nerviosos. Al final aceptan. Pero con cerradura doble.
+
+? El Hombre de Jengibre quiere hacerte un regalo.
+* Aceptarlo
+* Decirle que no hace falta
+si eleccion == 1: Es una galleta con tu cara. Y la de Fiona. Te da pena comértela.
+si eleccion == 2: jengibre: ¡Pues te lo doy igual! Es una galleta con tu cara. Qué bonito.
+
+? Al final de la fiesta, ¿qué haces?
+* Bailar con Fiona | amor += 1
+* Ayudar a limpiar | reina += 1
+* Ir a dormir temprano
+si eleccion == 1: Bailan bajo las estrellas, sin música. No hace falta.
+si eleccion == 2: La reina te encuentra barriendo el salón. Se pone a barrer contigo.
+si eleccion == 3: Duermes en una cama real. Es demasiado suave. Extrañas tu colchón de hojas.
+
+si destino == 3 -> epilogo_rey
+ir epilogo_regreso
+
+# ----------------------------------------------- epílogo del rey
+[epilogo_rey]
+fondo palacio
+Como reyes, cada día trae una decisión nueva.
+? Tu primera ley como rey:
+* Prohibido juzgar a alguien por su cara | cuentos += 1
+* Todos los martes son días de lodo
+* Los ogros pueden entrar a todas partes
+si eleccion == 1: Los ciudadanos protestan una semana. Luego se acostumbran. Luego lo agradecen.
+si eleccion == 2: Los niños del reino te adoran. Las lavanderías no tanto.
+si eleccion == 3: Nadie más es ogro en el reino, pero ahora se sienten muy invitados.
+
+? Un vecino reclama porque su gallina cruzó al jardín de otro. ¿Qué decides?
+* Que compartan la gallina
+* Que la gallina elija | cuentos += 1
+* Que hagan las paces con un pastel
+si eleccion == 2: La gallina elige a un tercer vecino. Nadie esperaba eso.
+
+? ¿Qué haces con el trono?
+* Lo cambias por un sillón de pantano
+* Lo dejas como está | suegro += 1
+* Lo pones en el jardín para que los niños jueguen | cuentos += 1
+
+? ¿Qué cargo le das a Burro?
+* Consejero real | amistad += 2
+* Ministro de las canciones
+* Embajador ante los dragones | dragona += 1
+si eleccion == 1: burro: ¡Consejero! Mi primer consejo: más comida en las reuniones.
+si eleccion == 3: burro: ¡Eso es básicamente ir a visitar a mi novia con sueldo!
+
+? ¿Y al Gato?
+* Capitán de la guardia | gato += 2
+* Maestro de esgrima del reino | gato += 1
+* Lo que él quiera
+si eleccion == 3: gato: Quiero una almohada al sol y un título largo. "Sir Gato de las Botas Brillantes".
+
+? ¿Cada cuánto visitan el pantano?
+* Todos los fines de semana | amor += 1
+* Una vez al mes
+* Nunca: ahora son reyes
+si eleccion == 3: fiona: ¿Nunca? Tú sin pantano te vas a secar como una pasa.
+si eleccion == 3: Al final, van todos los fines de semana.
+ir final_elegir
+
+# ----------------------------------------------- epílogo del pantano
+[epilogo_regreso]
+fondo carruaje
+Unos días después, emprenden el regreso a casa.
+? ¿Cómo regresan?
+* En el carruaje prestado que huele a repollo
+* Caminando, como en los viejos tiempos | amor += 1
+* Sobre la Dragona, si quiere llevarlos | dragona += 1
+si eleccion == 1: El repollo ya es parte de la familia.
+si eleccion == 2: Recorren el mismo bosque donde Fiona peleó con los bandidos. Ella te gana otra vez.
+si eleccion == 3: Desde el aire, el mundo se ve chiquito. Burro grita todo el camino. De felicidad.
+
+? ¿Invitas al Gato a vivir en el pantano?
+* Sí | gato += 1
+* Que venga de visita
+* Él decide | gato += 1
+si eleccion == 1: gato: Acepto. Pero exijo un tronco al sol.
+si eleccion == 3: gato: Decido que sí. Ustedes son lo más parecido a un hogar que he tenido.
+
+? ¿Y a Burro?
+* "Ya vives con nosotros, ¿no?" | amistad += 2
+* "Tienes tu propia casa con la Dragona."
+* "Solo si no cantas en las mañanas."
+si eleccion == 1: burro: ¡Siempre lo supe! ¡Pero qué bonito escucharlo!
+si eleccion == 2: burro: Una casa enorme. Con chimenea incluida. Ella es la chimenea.
+si eleccion == 3: burro: ¡Hecho! ...Canto en las tardes, entonces.
+
+fondo pantano
+El pantano está igual que siempre. Bueno, casi: alguien plantó flores en la entrada.
+? ¿Qué haces con las flores?
+* Dejarlas | cuentos += 1
+* Arrancarlas | gruñon += 1
+* Regalárselas a Fiona | amor += 1
+si eleccion == 1: Le dan color al lodo. Te gusta más de lo que admitirías.
+si eleccion == 3: fiona: ¿Me estás regalando mis propias flores? Las planté yo antes de irnos.
+
+? ¿Qué haces con el letrero de "PROHIBIDO PASAR"?
+* Lo dejas igual | gruñon += 1
+* Le agregas "...excepto amigos" | cuentos += 1, amistad += 1
+* Lo cambias por "BIENVENIDOS" | cuentos += 2
+si eleccion == 2: Burro lo lee y llora un poquito.
+si eleccion == 3: Tienes visitas cada día de la semana. Te arrepientes un poquito. Solo un poquito.
+
+ir final_elegir
+
+# ----------------------------------------------- un año después
+[final_elegir]
+fondo pantano
+ocultar todos
+mostrar shrek izquierda
+mostrar fiona derecha
+UN AÑO DESPUÉS
+? ¿Cómo celebran su aniversario?
+* Con un baño de lodo para dos | amor += 1
+* Con un viaje al mar | amor += 1
+* Con una fiesta para todos sus amigos | cuentos += 1, amistad += 1
+si eleccion == 2: Vuelven a la playa escondida. Esta vez te metes al agua sin quejarte. Mucho.
+si eleccion == 3: El pantano se llena de música y criaturas de cuento. El Lobo cocina.
+
+? ¿Qué le regalas a Fiona?
+* Un collar de dientes de dragón | dragona += 1
+* Una poesía que escribiste | amor += 2
+* Una espada para que siga entrenando | amor += 1
+si eleccion == 1: La Dragona los donó con mucho gusto. Se le cayeron solos.
+si eleccion == 2: Rima "amor" con "olor". Fiona dice que es lo más romántico que ha leído.
+si eleccion == 3: fiona: ¡Me encanta! Ahora puedo ganarle a los bandidos aún más rápido.
+
+? Fiona te regala algo a ti. ¿Qué crees que es?
+* Un letrero nuevo para el pantano
+* Un libro de cuentos con un ogro como héroe | cuentos += 1
+* Un frasco de gusanos de importación
+si eleccion == 1: Dice "AQUÍ VIVE UNA FAMILIA". Lo cuelgas en la puerta.
+si eleccion == 2: Es el libro que tiraste al principio de la historia. Ella le agregó un final nuevo.
+si eleccion == 3: Son gusanos de Muy Muy Lejano. Saben a fresa. Raros, pero ricos.
+
+mostrar burro centro
+burro: ¡Shrek! ¡Tengo noticias! ¡La Dragona y yo... vamos a tener bebés!
+? ¿Cómo reaccionas?
+* "¡Felicidades, Burro!" | amistad += 2
+* "¿Cómo... funciona eso?"
+* Te desmayas
+si eleccion == 1: Lo abrazas tan fuerte que se le salen las lágrimas. O tal vez ya estaba llorando.
+si eleccion == 2: burro: Con amor, Shrek. Con mucho amor. Y no hagas más preguntas.
+si eleccion == 3: Despiertas con Burro abanicándote con una hoja.
+
+? Burro te pide que seas el padrino.
+* "Será un honor." | amistad += 2
+* "¿Tengo que cargar dragoncitos?"
+si eleccion == 2: burro: Solo los fines de semana. Y no escupen fuego hasta los dos años. Casi.
+
+ocultar burro
+mostrar gato centro
+? El Gato quiere irse a buscar aventuras. ¿Qué le dices?
+* "Aquí siempre tendrás tu tronco al sol." | gato += 1
+* "Llévate provisiones."
+* "Mándanos cartas."
+si eleccion == 1: gato: Volveré. Un caballero siempre vuelve a casa.
+si eleccion == 3: gato: Cartas con sello de pata. Prometido.
+ocultar gato
+
+? Esa noche, Fiona y tú miran las estrellas. ¿Qué le dices?
+* "Gracias por elegirme." | amor += 1
+* "Nunca pensé que tendría todo esto." | amor += 1
+* Nada. Solo le tomas la mano.
+si eleccion == 1: fiona: Te elegiría mil veces. Incluso con tus ronquidos.
+si eleccion == 2: fiona: Yo tampoco. Ni en mil cuentos.
+si eleccion == 3: Ella se recarga en tu hombro. El pantano está en silencio. Un silencio perfecto.
+
+? Antes de dormir, recuerdas el principio de todo. ¿Qué piensas?
+* "Menos mal que me invadieron el pantano."
+* "Menos mal que Burro no se calla." | amistad += 1
+* "Menos mal que no me rendí." | valor += 1
+si eleccion == 1: Quién iba a decir que la peor noche de tu vida sería el principio de la mejor.
+si eleccion == 2: Desde algún lugar, Burro estornuda. Siente que pensaste en él.
+si eleccion == 3: Y no te rendiste. Ni en el puente, ni en la torre, ni en el baile.
+
+si destino == 1 -> final_humanos
+si destino == 3 -> final_rey
+ir final_ogros
+
+[final_humanos]
+fondo atardecer
+Viven felices como humanos en una casita en la orilla del pantano. A veces Shrek extraña sus orejas.
+Pero cada vez que Fiona sonríe, piensa que valió la pena.
+final humanos "Humanos para siempre" "Cambiaron por amor... y aprendieron a quererse con su nueva cara."
+
+[final_rey]
+fondo palacio
+El rey Shrek y la reina Fiona gobiernan Muy Muy Lejano. Los martes son días de lodo y nadie juzga a nadie por su cara.
+Es el reino más raro, más ruidoso y más feliz que haya existido.
+final rey_ogro "El rey ogro" "Del pantano al trono, sin dejar de ser tú mismo."
+
+[final_ogros]
+fondo pantano
+mostrar shrek izquierda
+mostrar fiona derecha
+Siguen siendo dos ogros en un pantano. Con lodo, mosquitos, amigos ruidosos y un silencio que ya no se siente solo.
+final ogros "Ogros de corazón" "No necesitaron cambiar para tener su final feliz."
